@@ -1,0 +1,1422 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.001);
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    height: 75px;
+    width: 100vw;
+}
+
+.navbar .navbar-left h1{
+    margin: 20px;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 2px hsl(0, 0%, 0%);
+    font-family: "Jersey";
+}
+
+.navbar .navbar-center ul{
+    display: flex;
+}
+
+.navbar .navbar-center ul li{
+    cursor: pointer;
+    font-family: "Jersey";
+    text-transform: uppercase;
+    font-size: 25px;
+    letter-spacing: 1px;
+    list-style: none;
+    color: rgb(244, 242, 242);
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    text-shadow: 2px 2px 2px  #0b0b0b;
+}
+
+.navbar .navbar-right .items-right{
+    display: flex;
+}
+
+.navbar .navbar-right .items-right button{
+    margin: 20px;
+    padding: 5px 12px;
+    font-family: "Jersey";
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    color: rgb(248, 248, 248);      
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 12px;
+    box-shadow: 0px 0px 20px 4px hsl(0, 0%, 53%);
+    text-shadow: 2px 2px 2px  #1e1e1e;
+}
+
+.navbar .navbar-right .items-right button a{
+    text-decoration: none;
+    color: rgb(248, 248, 248);
+}
+
+.navbar .navbar-right .items-right .game{
+    cursor: pointer;
+    display: block;
+    margin-right: 30px;
+    margin-top: 17px;
+    margin-left: 20px;
+    font-size: 18px;
+    color: rgb(170, 170, 170);
+}
+
+.navbar .navbar-right .items-right .search{
+    cursor: pointer;
+    display: block;
+    margin-right: 30px;
+    margin-top: 17px;
+    margin-left: 20px;
+    font-size: 18px;
+    color: rgb(170, 170, 170);
+}
+
+.navbar .navbar-right .game{
+    display: none;
+}
+
+.navbar .navbar-right .search{
+    display: none;
+}
+
+.restPage{
+    display: none;
+}
+
+body{
+    background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
+}
+
+.main-img{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main-img .black-img{
+    width: 100%;
+    border-radius: 20px;
+    height: 20rem;
+    margin: 40px auto;
+    background-image: linear-gradient(to right, black 25% , white 75%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 20px 4px hsl(0, 0%, 44%);
+}
+
+.main-img .black-img .inside-div{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.main-img .black-img .Firsttext{
+    font-family: "Jersey";
+    color: white;
+    font-size: 4rem;
+    font-weight: 100;
+    width: 25%;
+    z-index: 1;
+    margin-left: 10px;
+}
+
+.main-img .black-img .inside-div .featured-pic{
+    width: 75%;
+    height: 100%;
+    background-color: pink;
+    background-image: url(../../assets/images/featured-image.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.main-img .black-img .bottom{
+    display: flex;
+    width: 100%;
+    height: 30%;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.main-img .black-img .bottom .forums-option{
+    height: 100%; 
+    display: flex;
+    width: 33%;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.1rem;
+    font-family: "Jersey";
+    color: white;
+    text-shadow: 5px 5px 5px #000;
+    cursor: pointer;
+    background-color: rgba(111, 101, 101, 0.5);
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    border-radius: 0px 0px 0px 20px;
+}
+
+.main-img .black-img .bottom a{
+    text-decoration: none;
+}
+
+.main-img .black-img .bottom .playthroughs-option{
+    height: 100%; 
+    display: flex;
+    width: 33%;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.1rem;
+    font-family: "Jersey";
+    color: white;
+    text-shadow: 5px 5px 5px #000;
+    cursor: pointer;
+    background-color: rgba(111, 101, 101, 0.5);
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+.main-img .black-img .bottom .reviews-option{
+    height: 100%; 
+    display: flex;
+    width: 33%;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.1rem;
+    font-family: "Jersey";
+    color: white;
+    text-shadow: 5px 5px 5px #000;
+    cursor: pointer;
+    background-color: rgba(111, 101, 101, 0.5);
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    border-radius: 0px 0px 20px 0px;
+}
+
+@font-face {
+    font-family: "Jersey";
+    src: url("../../assets/fonts/Jersey25-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Keania";
+    src: url("../../assets/fonts/KeaniaOne-Regular.ttf");
+}
+
+/* .main-img .black-img .forums-option{
+    background-color: #6F6565;
+    flex-direction: column;
+    width: 30%;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 80px;
+    margin-top: 100px;
+} */
+
+.main-img .black-img .inside-div{
+    display: flex;
+    flex-direction: row;
+}
+
+.featured{
+    margin-top: 5rem;
+    width: 100%;
+    height: 500px;
+}
+
+.featured .featured-games-title{
+    font-family: "Jersey";
+    font-size: 3.7rem;
+    margin: 10px;
+    margin-left: 40px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    letter-spacing: 2px;
+    font-weight: 100;
+}
+
+.featured .see-all-featured-games{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+
+.featured a{
+    text-decoration: none;
+}
+
+.featured .shown-games{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 40px;
+    height: 400px;
+}
+
+@keyframes HoveringEffectOne {
+    0% {transform: rotate(0deg) scale(1);}
+    50%{transform: rotate(-3deg) scale(0.9);}
+    100%{transform: rotate(-4deg) scale(0.9);}
+}
+
+@keyframes HoveringEffectTwo {
+    0% {transform: rotate(0deg) scale(1);}
+    50%{transform: rotate(3deg) scale(0.9);}
+    100%{transform: rotate(4deg) scale(0.9);}
+}
+
+@keyframes reverseHoveringOne {
+    0% {transform: rotate(-4deg) scale(0.9);}
+    50%{transform: rotate(-3deg) scale(0.9);}
+    100%{transform: rotate(0deg) scale(1);}
+}
+
+@keyframes reverseHoveringTwo {
+    0% {transform: rotate(4deg) scale(0.9);}
+    50%{transform: rotate(3deg) scale(0.9);}
+    100%{transform: rotate(0deg) scale(1);}
+}
+
+.featured .shown-games .first-game-shown{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 48%;
+    height: 100%;
+    background-image: url(../../assets/images/minecraft-img.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-right: 10px;
+    box-shadow: 0px 0px 20px 4px hsl(180, 100%, 81%);
+    cursor: pointer;
+    animation: reverseHoveringOne 2s forwards;
+}
+
+.featured .shown-games .second-game-shown{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 48%;
+    height: 100%;
+    background-image: url(../../assets/images/callOfDuty-img.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 20px 4px hsl(60, 100%, 88%);
+    animation: reverseHoveringTwo 2s forwards;
+}
+
+.featured .shown-games .first-game-shown:hover{
+    animation-name: HoveringEffectOne;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+.featured .shown-games .second-game-shown:hover{
+    animation-name: HoveringEffectTwo;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+.featured .shown-games .first-game-shown h1{
+    font-family: "Keania";
+    margin: 20px;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+}
+
+.featured .shown-games .second-game-shown h1{
+    font-family: "Keania";
+    margin: 20px;
+    color: #fff;
+    text-shadow: 2px 2px #000;
+}
+
+.featured .shown-games .first-game-shown p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: #fff;
+}
+
+.featured .shown-games .second-game-shown p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: #fff;
+}
+
+hr{
+    margin-top: 80px;
+    margin-bottom: 0px;
+    height: 0.3rem;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 10px 4px hsl(0, 0%, 74%);
+}
+
+.third{
+    margin: 0;
+}
+
+@keyframes ThirdScaling {
+    0%{transform: scale(1.0);}
+    50%{transform: scale(0.9);}
+    100%{transform: scale(0.9);}
+}
+
+.third .shown-areas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 40px;
+    height: 375px;
+    margin-top: 4rem;
+}
+
+.first-area-shown{
+    width: 32%;
+    background-image: url("../../assets/images/tutorials.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 4px hsl(0, 100%, 75%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.first-area-shown:hover{
+    animation: ThirdScaling 1.2s forwards;
+}
+.second-area-shown:hover{
+    animation: ThirdScaling 1.2s forwards;
+}
+.third-area-shown:hover{
+    animation: ThirdScaling 1.2s forwards;
+}
+
+.second-area-shown{
+    width: 32%;
+    background-image: url("../../assets/images/chained-together-playthroughs.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;    
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 4px hsl(0, 100%, 75%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.third-area-shown{
+    width: 32%;
+    background-image: url("../../assets/images/reviews-pudge.jpg");
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 4px hsl(0, 100%, 75%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    cursor: pointer;
+}
+
+.first-area-shown h1{
+    font-family: "Jersey";
+    color: white;
+    text-shadow: 4px 4px #000;
+    margin: 20px;
+}
+
+.second-area-shown h1{
+    font-family: "Jersey";
+    color: white;
+    text-shadow: 4px 4px #000;
+    margin: 20px;
+}
+
+.third-area-shown h1{
+    font-family: "Jersey";
+    color: white;
+    text-shadow: 4px 4px #000;
+    margin: 20px;
+}
+
+.forum{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.forum h1{
+    color: rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px #1b1b1b;
+    margin: 40px;
+    font-family: "Jersey";
+    font-size: 3.7rem;
+    letter-spacing: 2px;
+}
+
+.inside-forum{
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #d7d1d1;
+    border-radius: 12px;
+    box-shadow: 0px 0px 20px 4px hsl(0, 0%, 60%);
+}
+
+.inside-forum i{
+    font-size: 100px;
+    margin-right: 30px;
+}
+
+.inside-forum .text{
+    margin-top: 20px;
+}
+
+.inside-forum .text a{
+    text-decoration: none;
+    font-size: 24px;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-weight: 900;
+    text-shadow: 2px 2px 2px black;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    background-color: #D9D9D9;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 30px 10px;
+}
+
+.footer .left-footer .left-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.footer .middle-footer .middle-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.footer .right-footer .right-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.contact-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.phone-contact{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.phone-contact i{
+    color: #564E4E;
+    font-size: 16px;
+}
+
+.email-contact i{
+    color: #564E4E;
+    font-size: 16px;
+}
+
+.email-contact{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.phone-contact .phone-number{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #564E4E;
+    margin-left: 10px;
+    font-weight: 100;
+    margin-top: 0px;
+}
+
+.email-contact .email{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #564E4E;
+    margin-left: 10px;
+    font-weight: 100;
+    margin-top: 0px;
+}
+
+.footer .middle-footer .middle-footer-links ul{
+    margin-top: 20px;
+}
+
+.footer .right-footer .right-footer-links ul{
+    margin-top: 20px;
+}
+
+.footer .middle-footer .middle-footer-links li{
+    list-style: none;
+}
+
+.middle-footer .middle-footer-links{
+    margin-top: 20px;
+}
+
+.right-footer .right-footer-links{
+    margin-top: 20px;
+}
+
+.middle-footer .middle-footer-links li a{
+    text-decoration: none;
+    color: #564E4E;
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+}
+
+.footer .right-footer .right-footer-links li{
+    list-style: none;
+}
+
+.right-footer .right-footer-links li a{
+    text-decoration: none;
+    color: #564E4E;
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+}
+
+.copyright-foot{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #4E3A3A;
+}
+
+.copyright-foot .copyright-text{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #C0C0C0;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.navbar-left img:hover{
+    transform: scale(0.9);
+}
+
+.navbar-center ul li:hover{
+    transform: scale(0.9);
+}
+
+.navbar-right .items-right button:hover{
+    background-color: rgb(255, 255, 255);
+    transform: scale(0.8);
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 2px #fffdfd;
+}
+
+.navbar-right .items-right button a:hover{
+    background-color: rgb(255, 255, 255);
+    transform: scale(0.9);
+    color: rgb(0, 0, 0);
+    text-shadow: 2px 2px 2px #fffdfd;
+}
+
+.main-img .black-img .bottom .forums-option:hover{
+    font-size: 3rem;
+}
+
+.main-img .black-img .bottom .playthroughs-option:hover{
+    font-size: 3rem;
+}
+
+.main-img .black-img .bottom .reviews-option:hover{
+    font-size: 3rem;
+}
+
+@media screen and (max-width: 200px) {
+    .navbar-center, .navbar-right .items-right button {
+        display: none;
+    }
+
+    .navbar .navbar-right .items-right .game {
+        display: none;
+    }
+
+    .navbar .navbar-right .items-right .search {
+        display: none;
+    }
+
+    .navbar .navbar-right .game {
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+        color: rgb(185, 230, 210);
+        text-shadow: 2px 2px 2px #4d4d4d;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .navbar .navbar-right .search {
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+        color: rgb(185, 230, 210);
+        text-shadow: 2px 2px 2px #4d4d4d;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .navbar .navbar-right .game:hover {
+        color: rgb(237, 244, 244);
+    }
+
+    .navbar .navbar-right .search:hover {
+        color: rgb(237, 244, 244);
+    }
+
+    .restPage.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(to right, black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
+        padding: 10px;
+    }
+
+    .restPage {
+        display: none;
+    }
+
+    .restPage ul {
+        justify-content: center;
+    }
+
+    .restPage ul li {
+        margin-bottom: 5px;
+        font-family: Tahoma;
+        font-size: 14px;
+        color: white;
+        text-shadow: 1px 1px 1px #000;
+    }
+
+    .restPage button {
+        width: 100px;
+        font-size: 12px;
+        padding: 2px 5px;
+    }
+
+    .restPage button a {
+        font-size: 10px;
+    }
+
+    .main-img .black-img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin: 20px auto;
+    }
+
+    .main-img .black-img .inside-div .Firsttext {
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .inside-div .featured-pic {
+        height: auto;
+    }
+
+    .main-img .black-img .bottom .forums-option,
+    .main-img .black-img .bottom .playthroughs-option,
+    .main-img .black-img .bottom .reviews-option {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .footer {
+        flex-direction: column;
+        font-size: 8px;
+    }
+
+    .footer .left-footer,
+    .footer .middle-footer,
+    .footer .right-footer {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .footer .contact-items p {
+        font-size: 8px;
+    }
+
+    .copyright-foot {
+        font-size: 8px;
+        text-align: center;
+    }
+
+    .forum .forumText {
+        font-size: 1.5rem;
+    }
+
+    .forum .inside-forum .text {
+        font-size: 10px;
+    }
+
+    hr {
+        margin: 2px 0;
+    }
+}
+
+
+@media screen and (max-width: 448px){
+    .navbar-center, .navbar-right .items-right button {
+        display: none;
+    }
+
+    .navbar .navbar-right .items-right .game {
+        display: none;
+    }
+
+    .navbar .navbar-right .items-right .search {
+        display: none;
+    }
+
+    .navbar .navbar-right .game {
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+        color: rgb(185, 230, 210);
+        text-shadow: 2px 2px 2px #4d4d4d;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .navbar .navbar-right .search {
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+        color: rgb(185, 230, 210);
+        text-shadow: 2px 2px 2px #4d4d4d;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .navbar .navbar-right .game:hover {
+        color: rgb(237, 244, 244);
+    }
+
+    .navbar .navbar-right .search:hover {
+        color: rgb(237, 244, 244);
+    }
+    
+    .restPage.active{ 
+        display: block;
+        background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: end;
+    }
+    
+    .restPage {
+       display: none;
+    }
+    
+    .restPage ul {
+        justify-content: space-between;
+    }
+    
+    .restPage ul li{
+        margin-bottom: 8px;
+        list-style: none;
+        font-family: Tahoma;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 24px;
+        color: white;
+        text-shadow: 2px 2px 2px #000;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 20px;
+    }
+    
+    .restPage button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 5px 0px;
+        width: 180px;
+        padding: 2px 9px;
+        border-radius: 12px;
+        border: none;
+        font-family: Tahoma;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 24px;
+        background-image: linear-gradient(pink, lightblue);
+        box-shadow: 0px 1px 0px 1px #434141;
+        text-shadow: 2px 2px 2px  #000;
+    }
+
+    .restPage button a{
+        color: white;
+        text-decoration: none;
+    }
+
+    .main-img .black-img .bottom .forums-option{
+        font-size: 1.0rem;
+    }
+
+    .main-img .black-img .bottom .playthroughs-option{
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .bottom .reviews-option{
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .inside-div .Firsttext{
+        font-size: 3.8rem;
+    }
+
+    .main-img .black-img {
+        height: auto;
+    }
+
+    .main-img .black-img .inside-div .featured-pic{
+        height: auto;
+    }
+
+    .main-img .black-img .inside-div{
+        height: auto;
+    }
+
+    .main-img .black-img .bottom{
+        height: auto;
+    }
+
+    .main-img .black-img .bottom .forums-option:hover{
+        font-size: 2.4rem;
+    }
+    
+    .main-img .black-img .bottom .playthroughs-option:hover{
+        font-size: 2.4rem;
+    }
+    
+    .main-img .black-img .bottom .reviews-option:hover{
+        font-size: 2.4rem;
+    }
+
+    .featured .shown-games .first-game-shown{
+        height: 50vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .featured .shown-games .second-game-shown{
+        height: 50vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    hr{
+        margin: 0;
+    }
+
+    .third{
+        height: 800px;
+    }
+
+    .third .shown-areas {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .third .shown-areas .first-area-shown{
+        margin-right: 30px;
+        width: 100%;
+        height: 32%;
+        margin-bottom: 20px;
+    }
+
+    .third .shown-areas .second-area-shown{
+        margin-right: 30px;
+        width: 100%;
+        height: 32%;
+        margin-bottom: 20px;
+    }
+
+    .third .shown-areas .third-area-shown{
+        margin-right: 30px;
+        width: 100%;
+        height: 32%;
+    }
+
+    .third .shown-areas h1{
+        font-size: 1.5rem;
+    }
+
+    .forum{
+        height: 50vh;
+    }
+
+    .forum .forumText{
+        font-size: 2.5rem;
+    }
+
+    .forum .inside-forum i{
+        margin-left: 20px;
+        font-size: 24px;
+    }
+
+    .forum .inside-forum .text{
+        margin-top: 0px;
+        font-size: 15px;
+        margin-left: -10px;
+    }
+
+    .footer{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer .left-footer .left-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .left-footer .contact-items .phone-contact p, .footer .left-footer .contact-items .email-contact p{
+        font-size: 10px;
+    }
+
+
+    .footer .middle-footer .middle-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .middle-footer-links li a{
+        font-size: 10px;
+    }
+
+    .footer .right-footer .right-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .right-footer-links li a{
+        font-size: 10px;
+    }
+
+    .copyright-foot{
+        height: auto;
+    }
+
+    .copyright-foot .copyright-text{
+        font-size: 10px;
+        padding: 10px;
+    }
+}
+
+
+@media screen and (max-width: 800px){
+    .navbar-center, .navbar-right .items-right button {
+        display: none;
+    }
+
+    .navbar .navbar-right .items-right .game {
+        display: none;
+    }
+
+    .navbar .navbar-right .items-right .search {
+        display: none;
+    }
+
+    .navbar .navbar-right .game {
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+        background-color: #000;
+        color: rgb(185, 230, 210);
+        text-shadow: 2px 2px 2px #4d4d4d;
+        cursor: pointer;
+        margin-right: 40px;
+    }
+
+    .navbar .navbar-right .icons {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar .navbar-right .search {
+        display: block;
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+        background-color: brown;
+        color: rgb(185, 230, 210);
+        text-shadow: 2px 2px 2px #4d4d4d;
+        cursor: pointer;
+        margin-right: 80px;
+    }
+
+    .navbar .navbar-right .game:hover {
+        color: rgb(237, 244, 244);
+    }
+
+    .navbar .navbar-right .search:hover {
+        color: rgb(237, 244, 244);
+    }
+    
+    .restPage.active{ 
+        display: block;
+        background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: end;
+    }
+    
+    .restPage {
+       display: none;
+    }
+    
+    .restPage ul {
+        justify-content: space-between;
+    }
+    
+    .restPage ul li{
+        margin-bottom: 8px;
+        list-style: none;
+        font-family: Tahoma;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 24px;
+        color: white;
+        text-shadow: 2px 2px 2px #000;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 20px;
+    }
+    
+    .restPage button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 5px 0px;
+        width: 180px;
+        padding: 2px 9px;
+        border-radius: 12px;
+        border: none;
+        font-family: Tahoma;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 24px;
+        background-image: linear-gradient(pink, lightblue);
+        box-shadow: 0px 1px 0px 1px #434141;
+        text-shadow: 2px 2px 2px  #000;
+    }
+
+    .restPage button a{
+        color: white;
+        text-decoration: none;
+    }
+
+    .main-img .black-img .bottom .forums-option{
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .bottom .playthroughs-option{
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .bottom .reviews-option{
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .inside-div .Firsttext{
+        font-size: 3.8rem;
+    }
+
+    .main-img .black-img {
+        height: auto;
+    }
+
+    .main-img .black-img .inside-div .featured-pic{
+        height: auto;
+    }
+
+    .main-img .black-img .inside-div{
+        height: auto;
+    }
+
+    .main-img .black-img .bottom{
+        height: auto;
+    }
+
+    .featured .shown-games .first-game-shown{
+        height: 50vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .featured .shown-games .second-game-shown{
+        height: 50vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    hr{
+        margin: 0;
+    }
+
+    .third{
+        height: 800px;
+    }
+
+    .third .shown-areas {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .third .shown-areas .first-area-shown{
+        margin-right: 30px;
+        width: 100%;
+        height: 32%;
+        margin-bottom: 20px;
+    }
+
+    .third .shown-areas .second-area-shown{
+        margin-right: 30px;
+        width: 100%;
+        height: 32%;
+        margin-bottom: 20px;
+    }
+
+    .third .shown-areas .third-area-shown{
+        margin-right: 30px;
+        width: 100%;
+        height: 32%;
+    }
+
+    .third .shown-areas h1{
+        font-size: 1.5rem;
+    }
+
+    .forum{
+        height: 50vh;
+    }
+
+    .forum .forumText{
+        font-size: 2.5rem;
+    }
+
+    .forum .inside-forum i{
+        margin-left: 20px;
+        font-size: 24px;
+    }
+
+    .forum .inside-forum .text{
+        margin-top: 0px;
+        font-size: 15px;
+        margin-left: -10px;
+    }
+
+    .footer{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer .left-footer .left-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .left-footer .contact-items .phone-contact p, .footer .left-footer .contact-items .email-contact p{
+        font-size: 10px;
+    }
+
+
+    .footer .middle-footer .middle-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .middle-footer-links li a{
+        font-size: 10px;
+    }
+
+    .footer .right-footer .right-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .right-footer-links li a{
+        font-size: 10px;
+    }
+
+    .copyright-foot{
+        height: auto;
+    }
+
+    .copyright-foot .copyright-text{
+        font-size: 10px;
+        padding: 10px;
+    }
+
+    .main-img .black-img .bottom .forums-option:hover{
+        font-size: 1.4rem;
+    }
+    
+    .main-img .black-img .bottom .playthroughs-option:hover{
+        font-size: 1.4rem;
+    }
+    
+    .main-img .black-img .bottom .reviews-option:hover{
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 1218px){
+    .main-img .black-img .bottom .forums-option{
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .bottom .playthroughs-option{
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .bottom .reviews-option{
+        font-size: 1.5rem;
+    }
+
+    .main-img .black-img .inside-div .Firsttext{
+        font-size: 3.8rem;
+    }
+
+    .main-img .black-img {
+        height: auto;
+    }
+
+    .main-img .black-img .inside-div .featured-pic{
+        height: auto;
+    }
+
+    .main-img .black-img .inside-div{
+        height: auto;
+    }
+
+    .main-img .black-img .bottom{
+        height: auto;
+    }
+
+    .featured .shown-games .first-game-shown{
+        height: 50vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .featured .shown-games .second-game-shown{
+        height: 50vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    hr{
+        margin: 0;
+    }
+
+    .third .shown-areas .first-area-shown{
+        background-size: cover;
+        background-position: center;
+    }
+
+    .third .shown-areas .second-area-shown{
+        background-size: cover;
+        background-position: center;
+    }
+
+    .third .shown-areas .third-area-shown{
+        background-size: cover;
+        background-position: center;
+    }
+
+    .main-img .black-img .bottom .forums-option:hover{
+        font-size: 1.4rem;
+    }
+    
+    .main-img .black-img .bottom .playthroughs-option:hover{
+        font-size: 1.4rem;
+    }
+    
+    .main-img .black-img .bottom .reviews-option:hover{
+        font-size: 1.4rem;
+    }
+}

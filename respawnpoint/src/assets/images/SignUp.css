@@ -1,0 +1,107 @@
+.signup {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(signUp.jpg);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.signup-container {
+    background-image: linear-gradient(to right, black, rgb(100, 250, 100), black);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    padding: 2rem 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.signup-container h1 {
+    text-shadow: 2px 2px 2px #000;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: #e0e0e0;
+}
+
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #ffffff;
+    color: #000000;
+    box-sizing: border-box;
+}
+
+.signup-container .gender-section {
+    text-align: left;
+    margin: 1rem 0;
+}
+
+.signup-container .gender-section label {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    cursor: pointer;
+}
+
+.signup-container input[type="radio"] {
+    margin-right: 5px;
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-container button:hover {
+    background-color: #252525;
+}
+
+.signup-container a {
+    display: block;
+    margin-top: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.signup-container a:hover {
+    color: white;
+    text-decoration: underline;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.gender{
+    margin: 10px;
+    font-weight: bold;
+}
+
+.radioBtn{
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.gender-div{
+    text-align: left; 
+    display: flex;
+}
