@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from "./components/PrivateRoute";
+import PrivateAdminRoute from "./components/PrivateAdminRoute";
 
 const Homepage = lazy(() => import("./pages/Home/homepage"));
 const Login = lazy(() => import("./pages/Auth/Login"));
@@ -15,6 +16,10 @@ const Privacy = lazy(() => import("./pages/Privacy/Privacy"));
 const Reviews = lazy(() => import("./pages/Reviews/Reviews"));
 const Terms = lazy(() => import("./pages/Terms/Terms"));
 const Tutorials = lazy(() => import("./pages/Tutorials/Tutorials"));
+const Forgot = lazy(() => import("./pages/Auth/Forgot"));
+const Choose = lazy(() => import("./pages/Extra/ChooseLogin"));
+const AdminDashboard = lazy(() => import("./pages/Home/admindashboard"));
+const AdminLogin = lazy(() => import("./pages/Auth/AdminLogin"));
 
 function App() {
 
@@ -36,6 +41,13 @@ function App() {
             <Route path="/reviews" element = {<Reviews/>}/>
             <Route path="/terms" element = {<Terms/>}/>
             <Route path="/tutorials" element = {<Tutorials/>}/>
+            <Route path="/forgot" element = {<Forgot/>}/>
+            <Route path="/choose" element = {<Choose/>}/>
+            <Route path="/adminlogin" element = {<AdminLogin/>}/>
+
+            <Route element={<PrivateAdminRoute/>}>
+                  <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            </Route>
           </Routes>
         </Suspense>
       </Router>

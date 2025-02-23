@@ -11,6 +11,43 @@
     align-items: center;
 }
 
+.featured-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.featured-card {
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    width: 250px;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.featured-card:hover {
+    transform: scale(1.05);
+}
+
+.featured-thumbnail {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #333;
+}
+
+.featured-card h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+
 .navbar{
     display: flex;
     justify-content: space-between;

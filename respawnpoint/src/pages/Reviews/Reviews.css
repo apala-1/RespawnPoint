@@ -7,8 +7,9 @@
 .entire-page{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-image: linear-gradient(to right,black, rgba(255, 21, 0, 0.534), #ff8d8d, rgba(255, 0, 0, 0.534), black);
 }
 
 .navbar{
@@ -94,9 +95,61 @@
     display: none;
 }
 
-body{
-    background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
+.review-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
+
+.review-card {
+    background-color: rgba(255, 0, 0, 0.313);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.868);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    padding: 15px;
+}
+
+.game-thumbnail {
+    width: 100%;
+    height: auto;
+    color: white;
+    border-bottom: 2px solid #ccc;
+}
+
+.review-content h2 {
+    font-family: "Jersey";
+    color: white;
+    font-size: 2.0rem;
+    letter-spacing: 2px;
+    margin: 10px 0;
+}
+
+.review-content p {
+    text-align: center;
+    font-size: 1rem;
+    color: #ffffff;
+    font-family: Cambria;
+    margin: 10px 0;
+}
+
+.read-more {
+    background: #ff0000;
+    color: #fff;
+    font-weight: 900;
+    box-shadow: 1px 3px white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.read-more:hover {
+    background: #b30000;
+}
+
 
 .h1{
     text-align: center;
@@ -113,7 +166,7 @@ body{
 
 .title{
     width: 100%;
-    background-image: linear-gradient(to right, rgb(35, 35, 35),white,  rgb(40, 40, 40));
+    background-image: linear-gradient(to right, rgba(255, 39, 39, 0.427),white,  rgba(255, 39, 39, 0.427));
 }
 
 @font-face {

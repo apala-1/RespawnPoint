@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.title {
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: "Jersey";
+}
+
+@font-face {
+    font-family: Jersey;
+    src: url(../../assets/fonts/Jersey25-Regular.ttf);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-button, .admin-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.user-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.user-button:hover {
+    background-color: #0056b3;
+}
+
+.admin-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.admin-button:hover {
+    background-color: #a71d2a;
+}

@@ -1,10 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./homepage.css";
+import React from "react"
 
-
-const HomePage = () => {
-    const navigate = useNavigate();
+const admindashboard = () => {
+        const navigate = useNavigate();
     // const menuIcon = document.getElementById("menuIcon");
     // const items = document.getElementById("items");
 
@@ -27,7 +24,7 @@ const HomePage = () => {
                     </div>
                     <div className="navbar-right">
                         <div className="items-right">
-                        <button className="logIn" onClick={()  => navigate("/choose")}>Log In</button>
+                        <button className="logIn" onClick={()  => navigate("/login")}>Log In</button>
                         <button className="signUp" onClick={() => navigate("/signup")}>Sign Up</button>
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </div>
@@ -135,11 +132,6 @@ const HomePage = () => {
                 </div>
        </div>
     );
-}
+};
 
-export default HomePage
-
-// Aba figure out how to add icons
-// Also make it responsive till 200px
-
-// make other pages
+export default admindashboard

@@ -7,9 +7,60 @@
 .entire-page{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to right,black, rgba(255, 21, 0, 0.534), #ff8d8d, rgba(255, 0, 0, 0.534), black);
 }
+
+.playthrough-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.game-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.game-box {
+    background: #1a1a1a;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1.2rem;
+    width: 220px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.game-box:hover {
+    background: #ff8c00;
+    transform: scale(1.05);
+}
+
+.game-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.game-name {
+    font-family: "Jersey";
+    font-size: 1.5rem;
+    text-align: center;
+}
+
 
 .navbar{
     display: flex;
@@ -94,10 +145,6 @@
     display: none;
 }
 
-body{
-    background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
-}
-
 .h1{
     text-align: center;
     font-size: 60px;
@@ -113,7 +160,7 @@ body{
 
 .title{
     width: 100%;
-    background-image: linear-gradient(to right, rgb(35, 35, 35),white,  rgb(40, 40, 40));
+    background-image: linear-gradient(to right, rgba(255, 39, 39, 0.427),white,  rgba(255, 39, 39, 0.427));
 }
 
 @font-face {

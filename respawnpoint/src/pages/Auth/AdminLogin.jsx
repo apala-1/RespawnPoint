@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './Login.css';
-import { useContext } from "react";
 import axios from "axios";
-import AuthContext from "../../context/AuthContext";
 
-const Login = () => {
+const AdminLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { login } = useContext(AuthContext);  
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -20,15 +17,13 @@ const Login = () => {
                 password
             });
 
-            if (response.data.user) {
-                alert("Login Successful!");
-                
-                login(response.data.user);  
-                localStorage.setItem("user", JSON.stringify(response.data.user));  
-                
-                navigate("/"); 
+            // Check if the response contains the user and if the user is an admin
+            if (response.data.user && response.data.user.role === "admin") {
+                alert("Admin Login Successful!");
+                localStorage.setItem("admin", JSON.stringify(response.data.user)); // Store admin data in localStorage
+                navigate("/admin-dashboard"); // Navigate to admin dashboard
             } else {
-                alert("Login Failed. Invalid email or password.");
+                alert("Invalid admin credentials.");
             }
         } catch (error) {
             console.error("Login error:", error);
@@ -40,36 +35,28 @@ const Login = () => {
         <div className="login">
             <div className="login-container">
                 <form onSubmit={handleSubmit}>
-                    <h1>Login Form</h1>
+                    <h1>Admin Login</h1>
                     <input
                         type="text"
                         id="email"
-                        name="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)} 
-                        placeholder="Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Admin Email"
                         required
                     />
                     <input
                         type="password"
                         id="password"
-                        name="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}  
-                        placeholder="Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Admin Password"
                         required
                     />
                     <button type="submit">Log In</button>
-                    <div>
-                        <a href="/forgot">Forgot your password?</a>
-                    </div>
-                    <div>
-                        <a href="/signup">Create an account</a>
-                    </div>
                 </form>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default AdminLogin;

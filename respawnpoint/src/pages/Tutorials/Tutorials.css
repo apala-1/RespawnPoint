@@ -7,9 +7,52 @@
 .entire-page{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-image: linear-gradient(to right,black, rgba(255, 21, 0, 0.534), #ff8d8d, rgba(255, 0, 0, 0.534), black);
 }
+
+.tutorial-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+    margin-left: 30px;
+}
+
+.tutorial-card {
+    margin-top: 2rem;
+    background-color: rgba(255, 0, 0, 0.313);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgb(255, 255, 255);
+    overflow: hidden;
+    width: 250px;
+    text-align: center;
+    padding: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.tutorial-card:hover {
+    transform: scale(1.05);
+}
+
+.tutorial-thumbnail {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #ccc;
+    color: white;
+}
+
+.tutorial-card h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: white;
+    font-family: "Jersey";
+    letter-spacing: 2px;
+}
+ 
 
 .navbar{
     display: flex;
@@ -19,7 +62,7 @@
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     height: 75px;
-    width: 100vw;
+    width: 100%;
     margin-bottom: 1rem;
 }
 
@@ -94,10 +137,6 @@
     display: none;
 }
 
-body{
-    background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
-}
-
 .h1{
     text-align: center;
     font-size: 60px;
@@ -113,7 +152,7 @@ body{
 
 .title{
     width: 100%;
-    background-image: linear-gradient(to right, rgb(35, 35, 35),white,  rgb(40, 40, 40));
+    background-image: linear-gradient(to right, rgba(255, 39, 39, 0.427),white,  rgba(255, 39, 39, 0.427));
 }
 
 @font-face {

@@ -19,7 +19,7 @@
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     height: 75px;
-    width: 100vw;
+    width: 100%;
     margin-bottom: 1rem;
 }
 
@@ -113,13 +113,54 @@ body{
 
 .title{
     width: 100%;
-    background-image: linear-gradient(to right, rgb(35, 35, 35),white,  rgb(40, 40, 40));
+    background-image: linear-gradient(to right, rgba(30, 30, 30, 0),rgba(255, 255, 255, 0.685),rgba(30, 30, 30, 0));
 }
 
 @font-face {
     font-family: Jersey;
     src: url(../../assets/fonts/Jersey25-Regular.ttf);
 }
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+    margin: 2rem auto;
+    background-color: rgba(0, 0, 0, 0.648);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 0px 20px 4px rgba(255, 255, 255, 0.2);
+}
+
+.about-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.2);
+    margin-right: 2rem;
+}
+
+.about-content {
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.about-content h2 {
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px black;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px black;
+}
+
 
 @media screen and (max-width: 800px){
     .navbar-center, .navbar-right .items-right button {

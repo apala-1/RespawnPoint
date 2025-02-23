@@ -4,11 +4,47 @@
     box-sizing: border-box;
 }
 
+.title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.terms-container {
+   width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+.terms-container p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.terms-container ul {
+    padding-left: 20px;
+}
+
+.terms-container li {
+    margin-bottom: 5px;
+}
+
+
 .entire-page{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
 }
 
 .navbar{
@@ -19,7 +55,7 @@
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     height: 75px;
-    width: 100vw;
+    width: 100%;
     margin-bottom: 1rem;
 }
 
@@ -94,10 +130,6 @@
     display: none;
 }
 
-body{
-    background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
-}
-
 .h1{
     text-align: center;
     font-size: 60px;
@@ -113,7 +145,9 @@ body{
 
 .title{
     width: 100%;
-    background-image: linear-gradient(to right, rgb(35, 35, 35),white,  rgb(40, 40, 40));
+    text-align: center;
+    border-radius: 15px;
+    background-image: linear-gradient(to right, rgba(35, 35, 35, 0.635),rgba(255, 255, 255, 0.635),  rgba(40, 40, 40, 0.635));
 }
 
 @font-face {
