@@ -56,10 +56,11 @@ const Featured = () => {
 
     return (
       <div
-        className="featured-card"
-        key={game.id}
-        onClick={() => navigate(`/game/${game.id}`)}
-      >
+  className="featured-card"
+  key={game.id}
+  onClick={() => navigate(`/game/${game.id}`)}
+>
+
         <img
           src={game.thumbnail ? game.thumbnail : "https://placehold.co/400"}
           alt={game.name}
