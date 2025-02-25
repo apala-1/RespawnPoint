@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./featured.css";
 
-const adminfeatured = () => {
+const AdminFeatured = () => {
+    const [games, setGames] = useState([]);
+
+    // Fetch the games from the backend when the component mounts
+    useEffect(() => {
+        const fetchGames = async () => {
+            try {
+                const response = await axios.get("http://localhost:5000/api/games");
+                setGames(response.data);
+            } catch (error) {
+                console.error("Error fetching games:", error);
+            }
+        };
+
+        fetchGames();
+    }, []);
+
     return (
         <div className="entire-page">
             <div className="navbar">
@@ -29,25 +46,24 @@ const adminfeatured = () => {
             <a href="/addgame"><button className="addBtn">Add Games +</button></a>
 
             <div className="featured-section">
-                <div className="featured-card" onClick={() => window.location.href='/game1'}>
-                    <img src="https://via.placeholder.com/150" alt="Game 1" className="featured-thumbnail" />
-                    <h2>Elden Ring</h2>
-                </div>
-                <div className="featured-card" onClick={() => window.location.href='/game2'}>
-                    <img src="https://via.placeholder.com/150" alt="Game 2" className="featured-thumbnail" />
-                    <h2>God of War</h2>
-                </div>
-                <div className="featured-card" onClick={() => window.location.href='/game3'}>
-                    <img src="https://via.placeholder.com/150" alt="Game 3" className="featured-thumbnail" />
-                    <h2>Cyberpunk 2077</h2>
-                </div>
-                <div className="featured-card" onClick={() => window.location.href='/game4'}>
-                    <img src="https://via.placeholder.com/150" alt="Game 4" className="featured-thumbnail" />
-                    <h2>Hollow Knight</h2>
-                </div>
+                {/* Dynamically display games */}
+                {games.map((game) => (
+                    <div
+                        key={game.id}
+                        className="featured-card"
+                        onClick={() => window.location.href = `/game/${game.id}`}
+                    >
+                        <img
+                            src={`http://localhost:5000/${game.thumbnail}`} // Use game thumbnail dynamically
+                            alt={game.name}
+                            className="featured-thumbnail"
+                        />
+                        <h2>{game.name}</h2>
+                    </div>
+                ))}
             </div>
         </div>
     );
-}
+};
 
-export default adminfeatured;
+export default AdminFeatured;

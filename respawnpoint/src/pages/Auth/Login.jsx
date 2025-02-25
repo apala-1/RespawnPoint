@@ -1,35 +1,32 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './Login.css';
+import "./Login.css";
 import axios from "axios";
-import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { login } = useContext(AuthContext);  
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+
         try {
             const response = await axios.post("http://localhost:5000/auth/login", {
                 email,
                 password
             });
-    
-            console.log("Login Response: ", response); 
-    
+
+            console.log("Login Response:", response);
+
             if (response.data.token) {
                 const user = response.data.user;
 
+                localStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("token", response.data.token);
+
                 if (user.role === "user") {
                     alert("User Login Successful!");
-
-                    localStorage.setItem("user", JSON.stringify(user)); 
-                    localStorage.setItem("token", response.data.token);
-                    
                     navigate("/user-dashboard");
                 } else if (user.role === "admin") {
                     alert("If you are trying to log in as an admin, use the admin login page.");
@@ -51,7 +48,6 @@ const Login = () => {
                     <h1>Login Form</h1>
                     <input
                         type="text"
-                        id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email"
@@ -59,7 +55,6 @@ const Login = () => {
                     />
                     <input
                         type="password"
-                        id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"

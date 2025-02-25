@@ -9,10 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // ✅ Add this line
 app.use(cors());
+app.use("/uploads", express.static("uploads"));
 
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/api/games", gameRoutes);
 
-const PORT = process.env.DB_PORT || 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -19,7 +19,7 @@ const AdminDashboard = lazy(() => import("./pages/Home/admindashboard"));
 const UserDashboard = lazy(() => import("./pages/Home/userdashboard"));
 const AdminLogin = lazy(() => import("./pages/Auth/AdminLogin"));
 const AddGame = lazy(() => import("./pages/Featured/AddGameForm"));
-const GameDetail = lazy(() => import("./pages/Featured/GameDetails"));
+const GameDetails = lazy(() => import("./pages/Featured/GameDetails"));
 const AdminFeatured = lazy(() => import("./pages/Featured/adminfeatured"));
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
             <Route path="/choose" element = {<Choose/>}/>
             <Route path="/adminlogin" element = {<AdminLogin/>}/>
             <Route path="/addgame" element = {<AddGame/>}/>
-            <Route path="/gamedetail" element = {<GameDetail/>}/>
+            <Route path="/game/:id" element={<GameDetails />} />
             <Route path="/user-dashboard" element = {<UserDashboard/>}/>
             <Route path="/admin-dashboard" element = {<AdminDashboard/>}/>
             <Route path="/adminfeatured" element = {<AdminFeatured/>}/>

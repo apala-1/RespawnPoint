@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; 
+import { useNavigate } from "react-router-dom";  // ✅ Import useNavigate
 import axios from "axios";
 import "./featured.css";
 
 const Featured = () => {
   const [games, setGames] = useState([]);
+  const navigate = useNavigate();  // ✅ Initialize navigate function
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -47,7 +49,11 @@ const Featured = () => {
       <div className="featured-section">
         {games.length > 0 ? (
           games.map((game) => (
-            <div key={game.id} className="featured-card" onClick={() => window.location.href = `/game/${game.id}`}>
+            <div 
+              key={game.id} 
+              className="featured-card" 
+              onClick={() => navigate(`/game/${game.id}`)} // ✅ Corrected navigation
+            >
               <img src={game.thumbnail} alt={game.name} className="featured-thumbnail" />
               <h2>{game.name}</h2>
             </div>

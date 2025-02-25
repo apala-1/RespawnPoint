@@ -23,33 +23,34 @@ const AddGameForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const formData = new FormData();
     formData.append("name", game.name);
-    formData.append("thumbnail", game.thumbnail); // Should be a valid URL
+    formData.append("thumbnail", game.thumbnail); // Thumbnail is a URL, not a file
     formData.append("description", game.description);
-  
-    for (const file of game.images) {
-      formData.append("images", file);
+
+    if (game.images.length > 0) {
+        game.images.forEach((file) => formData.append("images", file));
     }
-  
-    // 🔍 Log FormData entries to verify
-    for (let pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
-    }
-  
+
     try {
-      const response = await axios.post("http://localhost:5000/api/games", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-  
-      if (response.data.success) {
-        alert("Game saved successfully!");
-      }
+        const response = await axios.post("http://localhost:5000/api/games", formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+        });
+
+        console.log("✅ Response:", response.data);
+
+        if (response.data.success) {
+            alert("Game saved successfully!");
+            setGame({ name: "", thumbnail: "", description: "", images: [] });
+            navigate("/featured");
+        }
     } catch (error) {
-      console.error("Error saving game:", error.response?.data || error.message);
+        console.error("❌ Error saving game:", error.response?.data || error.message);
+        alert("Failed to save game.");
     }
-  };
+};
+
   
 
   return (

@@ -1,35 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"; // Use this hook to get the game ID from the URL
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-const GameDetail = () => {
-  const [game, setGame] = useState(null);
-  const { id } = useParams(); // Get the game ID from the URL
+const GameDetails = () => {
+    const { id } = useParams();  // ✅ Get game ID from URL
+    const [game, setGame] = useState(null);
 
-  useEffect(() => {
-    // Fetch the game details from the backend
-    fetch(`http://localhost:5000/api/games/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.message) {
-          // If there is a "message" field, it means the game wasn't found
-          console.log(data.message);
-        } else {
-          setGame(data); // Set the game details
-        }
-      })
-      .catch((err) => console.error("Error fetching game:", err));
-  }, [id]);
+    useEffect(() => {
+        const fetchGameDetails = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/games/${id}`);
+                setGame(response.data);
+            } catch (error) {
+                console.error("Error fetching game details:", error);
+            }
+        };
 
-  if (!game) return <p>Loading...</p>; // Show a loading state while fetching data
+        fetchGameDetails();
+    }, [id]);
 
-  return (
-    <div>
-      <h1>{game.name}</h1>
-      <img src={game.thumbnail} alt={game.name} />
-      <p>{game.description}</p>
-      {/* Add any additional game details or buttons here */}
-    </div>
-  );
+    if (!game) return <h2>Loading...</h2>;
+
+    return (
+        <div>
+            <h1>{game.name}</h1>
+            <p>{game.description}</p>
+            <div>
+                {game.images.map((image, index) => (
+                    <img src={`http://localhost:5000/${image}`} alt={game.name} width="200" key={index} />
+                ))}
+            </div>
+        </div>
+    );
 };
 
-export default GameDetail;
+export default GameDetails;
