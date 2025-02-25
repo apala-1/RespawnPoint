@@ -9,7 +9,11 @@ const router = express.Router();
 // 🔹 Signup Route (Register New User)
 router.post("/register", async (req, res) => {
     try {
-        const { name, email, password, role } = req.body; // Include role here if needed
+        const { name, email, password } = req.body; // name, email, and password
+
+        if (!name || !email || !password) {
+            return res.status(400).json({ error: "Name, email, and password are required" });
+        }
 
         // Check if user already exists
         const existingUser = await User.findOne({ where: { email } });
@@ -25,7 +29,7 @@ router.post("/register", async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            role: role || "user", // Default to user if no role passed
+            role: "user", // Assuming default role is 'user'
         });
 
         // Generate JWT Token
@@ -40,15 +44,30 @@ router.post("/register", async (req, res) => {
     }
 });
 
+
+const express = require("express");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { User } = require("../models");
+require("dotenv").config();
+
+
+// 🔹 Login Route
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 
         console.log("Login request:", { email, password });
 
-        const user = await User.findOne({ where: { email } });
+        // Use the correct table name ('Users') for Sequelize query
+        const user = await User.findOne({ 
+            where: { email },
+            tableName: 'Users'  // Explicitly specify the table name
+        });
 
-        if (!user) return res.status(400).json({ error: "User not found" });
+        if (!user) {
+            return res.status(400).json({ error: "User not found" });
+        }
 
         // Compare input password with stored hashed password
         const isMatch = await bcrypt.compare(password, user.password);
@@ -57,6 +76,7 @@ router.post("/login", async (req, res) => {
             return res.status(400).json({ error: "Invalid credentials" });
         }
 
+        // Generate JWT Token
         const token = jwt.sign(
             { id: user.id, role: user.role }, 
             process.env.JWT_SECRET, 
@@ -71,6 +91,8 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
+
+module.exports = router;
 
 // 🔹 Forgot Password Route
 router.post('/request-reset-password', async (req, res) => {

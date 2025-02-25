@@ -1,40 +1,38 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../context/AuthContext"; 
 import "./SignUp.css";
 import axios from "axios";
 
 const SignUp = () => {
     const navigate = useNavigate();
-    const { signup } = useContext(AuthContext);
     const [error, setError] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const fullName = event.target.fullname.value;
+        const fullName = event.target.fullname.value; // Get fullName
         const email = event.target.email.value;
-        const userName = event.target.username.value;
-        const gender = event.target.gender.value;
         const password = event.target.password.value;
         const confirmPassword = event.target.confirm_password.value;
-
- 
+    
         if (password !== confirmPassword) {
             setError("Passwords do not match!");
             return;
         }
-
+    
         try {
-        
-            await signup(fullName, email, password);
-
+            const response = await axios.post("http://localhost:5000/auth/register", {
+                name: fullName,  // Send name here
+                email,
+                password,
+            });
+    
             alert("Sign Up Successful!");
-            navigate("/login"); 
+            navigate("/login"); // Redirect to login after successful signup
         } catch (err) {
             setError(err.response?.data?.error || "Signup failed");
         }
     };
-
+    
     return (
         <div className="signup">
             <div className="signup-container">

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"; 
-import { useNavigate } from "react-router-dom";  // ✅ Import useNavigate
+import { useNavigate } from "react-router-dom";  
 import axios from "axios";
 import "./featured.css";
 
 const Featured = () => {
   const [games, setGames] = useState([]);
-  const navigate = useNavigate();  // ✅ Initialize navigate function
+  const navigate = useNavigate();  // Initialize navigate function
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -46,21 +46,24 @@ const Featured = () => {
         <h1 className="h1">Featured Games</h1>
       </div>
 
-      <div className="featured-section">
-        {games.length > 0 ? (
-          games.map((game) => (
-            <div 
-              key={game.id} 
-              className="featured-card" 
-              onClick={() => navigate(`/game/${game.id}`)} // ✅ Corrected navigation
-            >
-              <img src={game.thumbnail} alt={game.name} className="featured-thumbnail" />
-              <h2>{game.name}</h2>
-            </div>
-          ))
-        ) : (
-          <p>No games available</p>
-        )}
+      <div className="featured">
+        <div className="shown-games">
+          {games.length > 0 ? (
+            games.map((game, index) => (
+              <div 
+                className={index % 2 === 0 ? "first-game-shown" : "second-game-shown"} 
+                key={game.id}
+                style={{ backgroundImage: `url(${game.thumbnail})` }}
+                onClick={() => navigate(`/game/${game.id}`)}  // Navigate to the game details
+              >
+                <h1>{game.name}</h1>
+                <p>{game.description}</p>
+              </div>
+            ))
+          ) : (
+            <p>No games available</p>
+          )}
+        </div>
       </div>
     </div>
   );
