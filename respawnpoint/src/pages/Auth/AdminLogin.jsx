@@ -10,27 +10,37 @@ const AdminLogin = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        
         try {
-            const response = await axios.post("http://localhost:5000/auth/login", {
-                email,
-                password
-            });
+            console.log("Login data:", { email, password }); 
+            const response = await axios.post("http://localhost:5000/auth/login", { email, password });
+    
+            console.log("Response:", response);
+    
+            if (response.data.user) {
+                const user = response.data.user;
+                
+                if (user.role === "admin") {
+                    alert("Admin Login Successful!");
 
-            // Check if the response contains the user and if the user is an admin
-            if (response.data.user && response.data.user.role === "admin") {
-                alert("Admin Login Successful!");
-                localStorage.setItem("admin", JSON.stringify(response.data.user)); // Store admin data in localStorage
-                navigate("/admin-dashboard"); // Navigate to admin dashboard
+                    localStorage.setItem("admin", JSON.stringify(user));  
+                    localStorage.setItem("adminToken", response.data.token);
+                    
+                    navigate("/admin-dashboard");
+                } else if (user.role === "user") {
+                    alert("If you are a normal user, please log in using the user login page.");
+                    navigate("/login");
+                }
             } else {
-                alert("Invalid admin credentials.");
+                alert("Invalid login credentials.");
             }
         } catch (error) {
-            console.error("Login error:", error);
+            console.error("Login error:", error.response?.data || error.message);
             alert("An error occurred. Please try again.");
         }
     };
 
+    
     return (
         <div className="login">
             <div className="login-container">

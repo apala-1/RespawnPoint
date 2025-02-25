@@ -19,7 +19,10 @@ const Tutorials = lazy(() => import("./pages/Tutorials/Tutorials"));
 const Forgot = lazy(() => import("./pages/Auth/Forgot"));
 const Choose = lazy(() => import("./pages/Extra/ChooseLogin"));
 const AdminDashboard = lazy(() => import("./pages/Home/admindashboard"));
+const UserDashboard = lazy(() => import("./pages/Home/userdashboard"));
 const AdminLogin = lazy(() => import("./pages/Auth/AdminLogin"));
+const AddGame = lazy(() => import("./pages/Featured/AddGameForm"));
+const GameDetail = lazy(() => import("./pages/Featured/GameDetails"));
 
 function App() {
 
@@ -44,10 +47,18 @@ function App() {
             <Route path="/forgot" element = {<Forgot/>}/>
             <Route path="/choose" element = {<Choose/>}/>
             <Route path="/adminlogin" element = {<AdminLogin/>}/>
+            <Route path="/addgame" element = {<AddGame/>}/>
+            <Route path="/gamedetail" element = {<GameDetail/>}/>
+            <Route path="/user-dashboard" element = {<UserDashboard/>}/>
 
-            <Route element={<PrivateAdminRoute/>}>
-                  <Route path="/admin-dashboard" element={<AdminDashboard />} />
-            </Route>
+            <Route
+        path="/admin-dashboard"
+        element={
+            <PrivateAdminRoute>
+                <AdminDashboard />
+            </PrivateAdminRoute>
+        }
+    />
           </Routes>
         </Suspense>
       </Router>

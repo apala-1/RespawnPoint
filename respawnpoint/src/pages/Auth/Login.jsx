@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import './Login.css';
-import { useContext } from "react";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext";
 
@@ -13,20 +12,29 @@ const Login = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+    
         try {
             const response = await axios.post("http://localhost:5000/auth/login", {
                 email,
                 password
             });
+    
+            console.log("Login Response: ", response); 
+    
+            if (response.data.token) {
+                const user = response.data.user;
 
-            if (response.data.user) {
-                alert("Login Successful!");
-                
-                login(response.data.user);  
-                localStorage.setItem("user", JSON.stringify(response.data.user));  
-                
-                navigate("/"); 
+                if (user.role === "user") {
+                    alert("User Login Successful!");
+
+                    localStorage.setItem("user", JSON.stringify(user)); 
+                    localStorage.setItem("token", response.data.token);
+                    
+                    navigate("/user-dashboard");
+                } else if (user.role === "admin") {
+                    alert("If you are trying to log in as an admin, use the admin login page.");
+                    navigate("/adminlogin");
+                }
             } else {
                 alert("Login Failed. Invalid email or password.");
             }
@@ -44,18 +52,16 @@ const Login = () => {
                     <input
                         type="text"
                         id="email"
-                        name="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)} 
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email"
                         required
                     />
                     <input
                         type="password"
                         id="password"
-                        name="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}  
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
                         required
                     />
