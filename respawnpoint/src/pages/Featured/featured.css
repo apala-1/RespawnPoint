@@ -52,22 +52,25 @@ a{
     background: #1a1a1a;
     color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); /* Increase opacity for visibility */
     overflow: hidden;
     width: 250px;
     text-align: center;
     padding: 15px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .featured-card:hover {
     transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.5); /* More pronounced shadow on hover */
 }
+
 
 .featured-thumbnail {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover; /* Ensures the image scales properly */
     border-bottom: 2px solid #333;
 }
 

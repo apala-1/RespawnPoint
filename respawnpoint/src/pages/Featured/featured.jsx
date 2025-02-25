@@ -5,20 +5,22 @@ import "./featured.css";
 
 const Featured = () => {
   const [games, setGames] = useState([]);
-  const navigate = useNavigate();  // Initialize navigate function
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGames = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/games");
+        console.log("Fetched games:", response.data); // ✅ Log the entire response
         setGames(response.data);
       } catch (error) {
         console.error("Error fetching games:", error);
       }
     };
-
+  
     fetchGames();
   }, []);
+  
 
   return (
     <div className="entire-page">
@@ -46,24 +48,32 @@ const Featured = () => {
         <h1 className="h1">Featured Games</h1>
       </div>
 
-      <div className="featured">
-        <div className="shown-games">
-          {games.length > 0 ? (
-            games.map((game, index) => (
-              <div 
-                className={index % 2 === 0 ? "first-game-shown" : "second-game-shown"} 
-                key={game.id}
-                style={{ backgroundImage: `url(${game.thumbnail})` }}
-                onClick={() => navigate(`/game/${game.id}`)}  // Navigate to the game details
-              >
-                <h1>{game.name}</h1>
-                <p>{game.description}</p>
-              </div>
-            ))
-          ) : (
-            <p>No games available</p>
-          )}
-        </div>
+      <div className="featured-section">
+      {games.length > 0 ? (
+  games.map((game) => {
+    console.log("Game name:", game.name);
+    console.log("Thumbnail URL:", game.thumbnail);
+
+    return (
+      <div
+        className="featured-card"
+        key={game.id}
+        onClick={() => navigate(`/game/${game.id}`)}
+      >
+        <img
+          src={game.thumbnail ? game.thumbnail : "https://placehold.co/400"}
+          alt={game.name}
+          className="featured-thumbnail"
+        />
+        <h2>{game.name}</h2>
+        <p>{game.description}</p>
+      </div>
+    );
+  })
+) : (
+  <p>No games available</p>
+)}
+
       </div>
     </div>
   );
