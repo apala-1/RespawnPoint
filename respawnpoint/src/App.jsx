@@ -18,9 +18,9 @@ const Choose = lazy(() => import("./pages/Extra/ChooseLogin"));
 const AdminDashboard = lazy(() => import("./pages/Home/admindashboard"));
 const UserDashboard = lazy(() => import("./pages/Home/userdashboard"));
 const AdminLogin = lazy(() => import("./pages/Auth/AdminLogin"));
-const AddGame = lazy(() => import("./pages/Featured/AddGameForm"));
-const GameDetails = lazy(() => import("./pages/Featured/GameDetails"));
-const AdminFeatured = lazy(() => import("./pages/Featured/adminfeatured"));
+const CreateGame = lazy(() => import("./pages/Home/CreateGame"));
+const UpdateGame = lazy(() => import("./pages/Home/UpdateGame"));
+const DeleteGame = lazy(() => import("./pages/Home/DeleteGame"));
 
 function App() {
 
@@ -44,11 +44,12 @@ function App() {
             <Route path="/forgot" element = {<Forgot/>}/>
             <Route path="/choose" element = {<Choose/>}/>
             <Route path="/adminlogin" element = {<AdminLogin/>}/>
-            <Route path="/addgame" element = {<AddGame/>}/>
-            <Route path="/game/:id" element={<GameDetails />} />
             <Route path="/user-dashboard" element = {<UserDashboard/>}/>
             <Route path="/admin-dashboard" element = {<AdminDashboard/>}/>
-            <Route path="/adminfeatured" element = {<AdminFeatured/>}/>
+            <Route path="create-game" element = {<CreateGame/>}/>
+            <Route path="update-game/:gameId" element = {<UpdateGame/>}/>
+            <Route path="delete-game/:gameId" element = {<DeleteGame/>}/>
+            
           </Routes>
         </Suspense>
       </Router>

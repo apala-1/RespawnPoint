@@ -1,11 +1,21 @@
 const express = require("express");
-const { getGames, addGame, getGameById } = require("../controllers/gameController");
-const upload = require("../middleware/uploadMiddleware");
-
 const router = express.Router();
+const upload = require("../middleware/uploadMiddleware");  // For handling file uploads
+const { addFeaturedGame, getAllFeaturedGames, getFeaturedGameById, updateFeaturedGame, deleteFeaturedGame } = require("../controllers/gameController");
 
-router.get("/", getGames);
-router.post("/", upload.array("images", 5), addGame);
-router.get("/:id", getGameById); 
+// Add a new game (with images upload)
+router.post("/", upload.array("images"), addFeaturedGame);
+
+// Get all featured games
+router.get("/", getAllFeaturedGames);
+
+// Get a specific game by ID
+router.get("/:id", getFeaturedGameById);
+
+// Update a specific game by ID
+router.put("/:id", updateFeaturedGame);
+
+// Delete a specific game by ID
+router.delete("/:id", deleteFeaturedGame);
 
 module.exports = router;
