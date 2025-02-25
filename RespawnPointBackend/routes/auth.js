@@ -1,8 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require('nodemailer');
-const crypto = require('crypto');
 const { User } = require("../models");
 require("dotenv").config();
 
@@ -11,7 +9,7 @@ const router = express.Router();
 // 🔹 Signup Route (Register New User)
 router.post("/register", async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, role } = req.body; // Include role here if needed
 
         // Check if user already exists
         const existingUser = await User.findOne({ where: { email } });
@@ -26,55 +24,55 @@ router.post("/register", async (req, res) => {
         const newUser = await User.create({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            role: role || "user", // Default to user if no role passed
         });
 
         // Generate JWT Token
-        const token = jwt.sign({ id: newUser.id, role: "user" }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ id: newUser.id, role: newUser.role }, process.env.JWT_SECRET, {
             expiresIn: "1d",
         });
 
         res.status(201).json({ user: newUser, token });
     } catch (err) {
+        console.error("Error in registration:", err);
         res.status(500).json({ error: err.message });
     }
 });
 
-// 🔹 Login Route (Authenticate User or Admin)
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Check if admin is logging in
-        if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-            const token = jwt.sign({ email, role: "admin" }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        console.log("Login request:", { email, password });
 
-            return res.json({ 
-                user: { email, role: "admin" }, 
-                token 
-            });
-        }
-
-        // Find user by email
         const user = await User.findOne({ where: { email } });
+
         if (!user) return res.status(400).json({ error: "User not found" });
 
-        // Compare passwords
+        // Compare input password with stored hashed password
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
 
-        // Generate JWT Token
-        const token = jwt.sign({ id: user.id, role: "user" }, process.env.JWT_SECRET, {
-            expiresIn: "1h",
-        });
+        if (!isMatch) {
+            return res.status(400).json({ error: "Invalid credentials" });
+        }
 
-        res.json({ token, user });
+        const token = jwt.sign(
+            { id: user.id, role: user.role }, 
+            process.env.JWT_SECRET, 
+            { expiresIn: "1h" }
+        );
+
+        // 🔹 Return the user role in response
+        res.json({ token, user: { id: user.id, email: user.email, role: user.role } });
+
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error(err);
+        res.status(500).json({ error: "Internal server error" });
     }
 });
 
-// 🔹 Forgot Password Route 
+// 🔹 Forgot Password Route
 router.post('/request-reset-password', async (req, res) => {
     const { email } = req.body;
 
@@ -114,7 +112,7 @@ router.post('/request-reset-password', async (req, res) => {
     });
 });
 
-// Route to reset password with the token
+// 🔹 Reset Password Route
 router.post('/reset-password/:token', async (req, res) => {
     const { token } = req.params;
     const { newPassword } = req.body;

@@ -1,9 +1,11 @@
 const jwt = require("jsonwebtoken");
 
 const adminAuth = (req, res, next) => {
-    const token = req.header("Authorization");
+    const authHeader = req.header("Authorization");
+    
+    if (!authHeader) return res.status(401).json({ message: "Access Denied" });
 
-    if (!token) return res.status(401).json({ message: "Access Denied" });
+    const token = authHeader.startsWith("Bearer ") ? authHeader.split(" ")[1] : authHeader; // Handle "Bearer token"
 
     try {
         const verified = jwt.verify(token, process.env.JWT_SECRET);

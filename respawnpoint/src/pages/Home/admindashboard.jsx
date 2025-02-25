@@ -62,7 +62,7 @@ const admindashboard = () => {
 
             <div className="featured">
                 <h1 className="featured-games-title">Featured Games</h1>
-                <p className="see-all-featured-games" onClick={() => navigate("/featured")}>See all &nbsp;<i className="fa-solid fa-arrow-right"></i></p>
+                <p className="see-all-featured-games" onClick={() => navigate("/adminfeatured")}>See all &nbsp;<i className="fa-solid fa-arrow-right"></i></p>
                 <div className="shown-games">
                     <div className="first-game-shown">
                         <h1>Minecraft</h1>

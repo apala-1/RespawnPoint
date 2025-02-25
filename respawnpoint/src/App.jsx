@@ -1,8 +1,5 @@
 import { lazy, Suspense } from 'react'
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import PrivateRoute from "./components/PrivateRoute";
-import PrivateAdminRoute from "./components/PrivateAdminRoute";
 
 const Homepage = lazy(() => import("./pages/Home/homepage"));
 const Login = lazy(() => import("./pages/Auth/Login"));
@@ -23,11 +20,11 @@ const UserDashboard = lazy(() => import("./pages/Home/userdashboard"));
 const AdminLogin = lazy(() => import("./pages/Auth/AdminLogin"));
 const AddGame = lazy(() => import("./pages/Featured/AddGameForm"));
 const GameDetail = lazy(() => import("./pages/Featured/GameDetails"));
+const AdminFeatured = lazy(() => import("./pages/Featured/adminfeatured"));
 
 function App() {
 
   return (
-    <AuthProvider>
       <Router>
         <Suspense fallback={<div>Loading...</div>}> 
           <Routes>
@@ -50,19 +47,11 @@ function App() {
             <Route path="/addgame" element = {<AddGame/>}/>
             <Route path="/gamedetail" element = {<GameDetail/>}/>
             <Route path="/user-dashboard" element = {<UserDashboard/>}/>
-
-            <Route
-        path="/admin-dashboard"
-        element={
-            <PrivateAdminRoute>
-                <AdminDashboard />
-            </PrivateAdminRoute>
-        }
-    />
+            <Route path="/admin-dashboard" element = {<AdminDashboard/>}/>
+            <Route path="/adminfeatured" element = {<AdminFeatured/>}/>
           </Routes>
         </Suspense>
       </Router>
-    </AuthProvider>
   );
 }
 
