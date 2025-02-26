@@ -4,6 +4,10 @@ import "./homepage.css";
 
 const userdashboard = () => {
     const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem("token"); // Remove JWT
+        window.location.href = "/login"; // Redirect to login page
+      };
 
     return (
        <div className="everything">
@@ -23,6 +27,9 @@ const userdashboard = () => {
                     <a href="/profile">
   <button className="profile-btn">Profile</button>
 </a>
+<button onClick={handleLogout} className="logout-btn">
+    Logout
+  </button>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div className="icons">
@@ -41,6 +48,9 @@ const userdashboard = () => {
                 <a href="/profile">
   <button className="profile-btn">Profile</button>
 </a>
+<button onClick={handleLogout} className="logout-btn">
+    Logout
+  </button>
             </div>
 
             <div className="main-img">

@@ -34,10 +34,19 @@ const AdminDashboard = () => {
         navigate("/create-game"); // Navigate to the page for creating a game
     };
 
+    const handleLogout = () => {
+  localStorage.removeItem("token"); // Remove JWT
+  window.location.href = "/login"; // Redirect to login page
+};
+
     return (
         <div>
             <h1>Admin Dashboard</h1>
             <div>
+  <button onClick={handleLogout} className="logout-btn">
+    Logout
+  </button>
+
             <a href="/profile">
   <button className="profile-btn">Profile</button>
 </a>
