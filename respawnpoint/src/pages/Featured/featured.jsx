@@ -67,7 +67,6 @@ const Featured = () => {
           className="featured-thumbnail"
         />
         <h2>{game.name}</h2>
-        <p>{game.description}</p>
       </div>
     );
   })

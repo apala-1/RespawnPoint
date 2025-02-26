@@ -21,8 +21,8 @@ const HomePage = () => {
                     <div className="navbar-center">
                         <ul>
                             <li onClick={() => navigate("/homepage")}>Home</li>
-                            <li onClick={() => navigate("/tutorials")}>Tutorials</li>
-                            <li onClick={() => navigate("/reviews")}>Reviews</li>
+                            <li onClick={() => navigate("/login")}>Tutorials</li>
+                            <li onClick={() => navigate("/login")}>Reviews</li>
                         </ul>
                     </div>
                     <div className="navbar-right">
@@ -39,9 +39,9 @@ const HomePage = () => {
                 </div>
                 <div className="restPage" id = "items">
                         <ul>
-                            <li>Home</li>
-                            <li>Tutorials</li>
-                            <li>Reviews</li>
+                            <li onClick={() => navigate("/login")}>Home</li>
+                            <li onClick={() => navigate("/login")}>Tutorials</li>
+                            <li onClick={() => navigate("/login")}>Reviews</li>
                         </ul>
                         <button className="logIn" onClick={() => navigate("/login")}>Log In</button>
                         <button className="signUp" onClick={() => navigate("/signup")}>Sign Up</button>
@@ -53,16 +53,16 @@ const HomePage = () => {
                             <div className="featured-pic"></div>
                         </div>
                         <div className="bottom">
-                        <div className="forums-option" onClick={() => navigate("/forum")}>Forums</div>
-                            <div className="playthroughs-option" onClick={() => navigate("/playthroughs")}>Playthroughs</div>
-                            <div className="reviews-option" onClick={() => navigate("/reviews")}>Reviews</div>
+                        <div className="forums-option" onClick={() => navigate("/login")}>Forums</div>
+                            <div className="playthroughs-option" onClick={() => navigate("/login")}>Playthroughs</div>
+                            <div className="reviews-option" onClick={() => navigate("/login")}>Reviews</div>
                         </div>
                     </div>
                 </div>
 
                 <div className="featured">
                     <h1 className="featured-games-title">Featured Games</h1>
-                    <p className="see-all-featured-games" onClick={() => navigate("/featured")}>See all &nbsp;<i className="fa-solid fa-arrow-right"></i></p>
+                    <p className="see-all-featured-games" onClick={() => navigate("/login")}>See all &nbsp;<i className="fa-solid fa-arrow-right"></i></p>
                     <div className="shown-games">
                         <div className="first-game-shown">
                             <h1>Minecraft</h1>
@@ -77,13 +77,13 @@ const HomePage = () => {
                 <hr/>
                 <div className="third">
                     <div className="shown-areas">
-                        <div className="first-area-shown" onClick={() => navigate("/tutorials")}>
+                        <div className="first-area-shown" onClick={() => navigate("/login")}>
                             <h1>Tutorials</h1>
                         </div>
-                        <div className="second-area-shown" onClick={() => navigate("/reviews")}>
+                        <div className="second-area-shown" onClick={() => navigate("/login")}>
                             <h1>Reviews</h1>
                         </div>
-                        <div className="third-area-shown" onClick={() => navigate("/playthroughs")}>
+                        <div className="third-area-shown" onClick={() => navigate("/login")}>
                             <h1> Playthroughs</h1>
                         </div>
                     </div>
@@ -115,9 +115,9 @@ const HomePage = () => {
                         <h1 className="middle-footer-text">Main Sections</h1>
                         <ul className="middle-footer-links">
                             <li onClick={() => navigate("/homepage")}>Home</li>
-                            <li onClick={() => navigate("/reviews")}>Game Reviews</li>
-                            <li onClick={() => navigate("/tutorials")}>Tutorials</li>
-                            <li onClick={() => navigate("/forum")}>Community / Forum</li>
+                            <li onClick={() => navigate("/login")}>Game Reviews</li>
+                            <li onClick={() => navigate("/login")}>Tutorials</li>
+                            <li onClick={() => navigate("/login")}>Community / Forum</li>
                         </ul>
                     </div>
                     <div className="right-footer">
