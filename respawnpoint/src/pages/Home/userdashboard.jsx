@@ -1,13 +1,19 @@
-import React from "react";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./homepage.css";
 
 const userdashboard = () => {
+    const [menuActive, setMenuActive] = useState(false);  // For toggling
     const navigate = useNavigate();
+
     const handleLogout = () => {
         localStorage.removeItem("token"); // Remove JWT
         window.location.href = "/login"; // Redirect to login page
-      };
+    };
+
+    const toggleMenu = () => {
+        setMenuActive(!menuActive); // Toggle active state
+    };
 
     return (
        <div className="everything">
@@ -24,33 +30,38 @@ const userdashboard = () => {
                 </div>
                 <div className="navbar-right">
                     <div className="items-right">
-                    <a href="/profile">
-  <button className="profile-btn">Profile</button>
-</a>
-<button onClick={handleLogout} className="logout-btn">
-    Logout
-  </button>
+                        <a href="/profile">
+                            <button className="profile-btn">Profile</button>
+                        </a>
+                        <button onClick={handleLogout} className="logout-btn">
+                            Logout
+                        </button>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div className="icons">
-                        <div id="menuIcon" className="game"></div>
-                        <div className="search"></div>
+                        <div
+                            id="menuIcon"
+                            className="game"
+                            onClick={toggleMenu}  // Add the toggle functionality here
+                        >
+                            =
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="restPage" id="items">
+            <div className={`restPage ${menuActive ? "active" : ""}`}>  {/* Toggling class */}
                 <ul>
                     <li>Home</li>
                     <li>Tutorials</li>
                     <li>Reviews</li>
                 </ul>
                 <a href="/profile">
-  <button className="profile-btn">Profile</button>
-</a>
-<button onClick={handleLogout} className="logout-btn">
-    Logout
-  </button>
+                    <button className="profile-btn">Profile</button>
+                </a>
+                <button onClick={handleLogout} className="logout-btn">
+                    Logout
+                </button>
             </div>
 
             <div className="main-img">
