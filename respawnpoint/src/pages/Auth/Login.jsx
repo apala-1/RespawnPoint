@@ -24,6 +24,7 @@ const Login = () => {
 
                 localStorage.setItem("user", JSON.stringify(user));
                 localStorage.setItem("token", response.data.token);
+console.log("Token saved:", response.data.token); // Debugging
 
                 if (user.role === "user") {
                     alert("User Login Successful!");

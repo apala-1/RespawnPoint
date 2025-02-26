@@ -4,6 +4,8 @@ const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/adminRoutes");
 const gameRoutes = require("./routes/gameRoutes");
 const profileRoutes = require("./routes/profileRoutes");
+const adminProfileRoutes = require("./routes/adminProfileRoutes");
+const tutorialRoutes = require("./routes/tutorialRoutes");
 require("dotenv").config();
 
 const app = express();
@@ -20,6 +22,8 @@ app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/api/games", gameRoutes);
 app.use('/api', profileRoutes);
+app.use("/api", adminProfileRoutes);
+app.use('/api', tutorialRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

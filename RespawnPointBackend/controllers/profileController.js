@@ -1,33 +1,21 @@
-const pool = require("../config/db"); // Adjust based on your setup
+// Assuming you are using Sequelize, import the User model.
+const { User } = require('../models/user');  // Adjust the path based on your file structure
 
 const getUserProfile = async (req, res) => {
   try {
-    console.log("User from request:", req.user);
+    const userId = req.user.id;  // Extract user ID from the token
+    
+    const user = await User.findByPk(userId);  // Fetch user from the database
 
-    if (!req.user || !req.user.id) {
-      return res.status(401).json({ message: "Unauthorized, user ID missing" });
+    if (!user) {
+      return res.status(404).json({ message: "User not found." });  // Return 404 if user doesn't exist
     }
 
-    const userId = req.user.id;
-    console.log("Fetching profile for ID:", userId);
-
-    // Fetch user/admin details
-    const result = await pool.query('SELECT name, email, role FROM "Users" WHERE id = $1', [userId]);
-
-    if (result.rows.length === 0) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    const user = result.rows[0];
-    console.log("Fetched user:", user);
-
-    // Send role in response if needed
-    res.json({ name: user.name, email: user.email, role: user.role });
+    res.json(user);  // Return the user profile
   } catch (error) {
-    console.error("Error fetching profile:", error);
-    res.status(500).json({ message: "Something went wrong while fetching the profile" });
+    console.error("Error fetching user profile:", error);  // Log the error
+    res.status(500).json({ message: "Internal Server Error" });  // Return 500 for unexpected errors
   }
 };
-
 
 module.exports = { getUserProfile };

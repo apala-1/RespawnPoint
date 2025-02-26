@@ -24,6 +24,9 @@ const DeleteGame = lazy(() => import("./pages/Home/DeleteGame"));
 const GameDetails = lazy(() => import("./pages/Featured/GameDetails"));
 const Profile = lazy(() => import("./pages/Home/Profile"));
 const ResetPassword = lazy(() => import("./pages/Auth/ResetPassword"));
+const CreateTutorial = lazy(() => import("./pages/Tutorials/CreateTutorial"));
+const TutorialDetail = lazy(() => import("./pages/Tutorials/TutorialDetail"));
+const UpdateTutorial = lazy(() => import("./pages/Tutorials/UpdateTutorial"));
 
 function App() {
 
@@ -55,6 +58,9 @@ function App() {
             <Route path="/game/:id" element={<GameDetails />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
+            <Route path="/create-tutorial" element={<CreateTutorial/>} />
+            <Route path="/tutorials/:id" element={<TutorialDetail/>} />
+            <Route path="/tutorials/update/:id" element={<UpdateTutorial/>} />
           </Routes>
         </Suspense>
       </Router>
