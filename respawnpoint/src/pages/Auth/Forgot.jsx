@@ -16,9 +16,8 @@ const Forgot = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email }),
+                body: JSON.stringify({ email }), // Ensure `email` is passed correctly here
             });
-
             const data = await response.json();
             if (data.success) {
                 setMessage("Password reset email sent. Please check your inbox.");
@@ -26,9 +25,11 @@ const Forgot = () => {
                 setMessage(data.message || "Error sending reset email.");
             }
         } catch (error) {
+            console.error("Error:", error); // Log the error for more insights
             setMessage("Error sending password reset email.");
         }
     };
+    
 
     return (
         <div className="forgot">

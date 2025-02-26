@@ -13,10 +13,24 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
       },
       password: {
         type: Sequelize.STRING
+      },
+      role: {
+        type: Sequelize.STRING,
+        defaultValue: 'user'
+      },
+      resetToken: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      resetTokenExpiration: {
+        type: Sequelize.DATE,
+        allowNull: true
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +42,7 @@ module.exports = {
       }
     });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Users');
   }

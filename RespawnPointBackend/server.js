@@ -9,7 +9,11 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // ✅ Add this line
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', // Allow your frontend domain (localhost:5173) to access the backend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 app.use("/uploads", express.static("uploads"));
 
 app.use("/auth", authRoutes);
