@@ -44,14 +44,6 @@ router.post("/register", async (req, res) => {
     }
 });
 
-
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const { User } = require("../models");
-require("dotenv").config();
-
-
 // 🔹 Login Route
 router.post("/login", async (req, res) => {
     try {
@@ -91,9 +83,6 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ error: "Internal server error" });
     }
 });
-
-module.exports = router;
-
 // 🔹 Forgot Password Route
 router.post('/request-reset-password', async (req, res) => {
     const { email } = req.body;

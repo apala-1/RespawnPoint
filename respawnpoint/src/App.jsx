@@ -22,6 +22,7 @@ const CreateGame = lazy(() => import("./pages/Home/CreateGame"));
 const UpdateGame = lazy(() => import("./pages/Home/UpdateGame"));
 const DeleteGame = lazy(() => import("./pages/Home/DeleteGame"));
 const GameDetails = lazy(() => import("./pages/Featured/GameDetails"));
+const Profile = lazy(() => import("./pages/Home/Profile"));
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
             <Route path="update-game/:gameId" element = {<UpdateGame/>}/>
             <Route path="delete-game/:gameId" element = {<DeleteGame/>}/>
             <Route path="/game/:id" element={<GameDetails />} />
+            <Route path="/profile" element={<Profile />} />
             
           </Routes>
         </Suspense>

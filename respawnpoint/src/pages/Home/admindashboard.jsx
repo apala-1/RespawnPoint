@@ -38,9 +38,13 @@ const AdminDashboard = () => {
         <div>
             <h1>Admin Dashboard</h1>
             <div>
+            <a href="/profile">
+  <button className="profile-btn">Profile</button>
+</a>
                 {/* Button for creating a new game */}
                 <button onClick={handleCreate}>Create Game</button>
             </div>
+        
 
             <div>
                 <input
@@ -50,6 +54,7 @@ const AdminDashboard = () => {
                     onChange={(e) => setGameId(e.target.value)}
                 />
             </div>
+
 
             <div>
                 {/* Button to update the game */}

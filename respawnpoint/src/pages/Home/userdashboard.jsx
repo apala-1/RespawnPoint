@@ -20,6 +20,9 @@ const userdashboard = () => {
                 </div>
                 <div className="navbar-right">
                     <div className="items-right">
+                    <a href="/profile">
+  <button className="profile-btn">Profile</button>
+</a>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div className="icons">
@@ -35,6 +38,9 @@ const userdashboard = () => {
                     <li>Tutorials</li>
                     <li>Reviews</li>
                 </ul>
+                <a href="/profile">
+  <button className="profile-btn">Profile</button>
+</a>
             </div>
 
             <div className="main-img">
