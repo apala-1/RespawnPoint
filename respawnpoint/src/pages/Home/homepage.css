@@ -1080,24 +1080,12 @@ hr{
         display: none;
     }
 
-    .navbar .navbar-right .items-right .game {
-        display: none;
+    .navbar .navbar-right .icons .game {
+        display: block;
     }
 
     .navbar .navbar-right .items-right .search {
         display: none;
-    }
-
-    .navbar .navbar-right .game {
-        display: block;
-        font-size: 20px;
-        height: 20px;
-        width: 20px;
-        background-color: #000;
-        color: rgb(185, 230, 210);
-        text-shadow: 2px 2px 2px #4d4d4d;
-        cursor: pointer;
-        margin-right: 40px;
     }
 
     .navbar .navbar-right .icons {
@@ -1117,7 +1105,16 @@ hr{
         margin-right: 80px;
     }
 
-    .navbar .navbar-right .game:hover {
+    .navbar .navbar-right .game {
+        display: block;
+        font-size: 50px;
+        color: rgb(185, 230, 210);
+        text-shadow: 2px 2px 2px #4d4d4d;
+        cursor: pointer;
+        margin-right: 40px;
+    }
+
+    .navbar .navbar-right .icons .game:hover {
         color: rgb(237, 244, 244);
     }
 
@@ -1144,6 +1141,7 @@ hr{
     }
     
     .restPage ul li{
+        cursor: pointer;
         margin-bottom: 8px;
         list-style: none;
         font-family: Tahoma;
@@ -1156,7 +1154,6 @@ hr{
         align-items: center;
         padding: 0px 20px;
     }
-    
     .restPage button{
         display: flex;
         justify-content: center;
@@ -1166,6 +1163,7 @@ hr{
         width: 180px;
         padding: 2px 9px;
         border-radius: 12px;
+        cursor: pointer;
         border: none;
         font-family: Tahoma;
         font-weight: 900;
@@ -1174,12 +1172,13 @@ hr{
         background-image: linear-gradient(pink, lightblue);
         box-shadow: 0px 1px 0px 1px #434141;
         text-shadow: 2px 2px 2px  #000;
-    }
-
-    .restPage button a{
-        color: white;
         text-decoration: none;
     }
+
+    .restPage button:hover{
+        transform: scale(0.9);
+    }
+    
 
     .main-img .black-img .bottom .forums-option{
         font-size: 1.5rem;

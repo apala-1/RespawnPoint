@@ -1,0 +1,124 @@
+/* Global Styles for Update Tutorial */
+.update-tutorial-container {
+    background: linear-gradient(135deg, #800000, #330000); /* Red-dark gradient background */
+    color: #fff; /* White text for contrast */
+    font-family: 'Roboto', sans-serif;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.update-tutorial-heading {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: #ff3838; /* Bold red for heading */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+}
+
+.update-tutorial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.update-tutorial-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 500px;
+}
+
+.update-tutorial-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ff3838; /* Red for labels */
+}
+
+.update-tutorial-input,
+.update-tutorial-textarea {
+    background-color: #1a1a1a; /* Dark background for inputs */
+    border: none;
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #fff;
+    width: 100%;
+    font-size: 16px;
+}
+
+.update-tutorial-textarea {
+    height: 150px;
+    resize: none;
+}
+
+.update-tutorial-button {
+    background-color: #ff3838; /* Bold red button */
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 220px;
+    margin-top: 20px;
+}
+
+.update-tutorial-button:hover {
+    background-color: #e03131; /* Darker red on hover */
+    transform: scale(1.05);
+}
+
+.update-tutorial-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px #ff3838; /* Glow effect on focus */
+}
+
+.delete-tutorial-button {
+    background-color: #ff3838;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 220px;
+}
+
+.delete-tutorial-button:hover {
+    background-color: #e03131;
+    transform: scale(1.05);
+}
+
+.delete-tutorial-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px #ff3838;
+}
+
+@media (max-width: 768px) {
+    .update-tutorial-container {
+        padding: 20px;
+    }
+
+    .update-tutorial-heading {
+        font-size: 26px;
+    }
+
+    .update-tutorial-input,
+    .update-tutorial-textarea {
+        font-size: 14px;
+        max-width: 100%;
+    }
+}

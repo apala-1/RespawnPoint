@@ -1,0 +1,87 @@
+/* General styling */
+body {
+    font-family: "Orbitron", sans-serif;
+    background-color: #0d0d0d;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Form container */
+.create-game-form {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Form title */
+.create-game-form h1 {
+    font-size: 2rem;
+    text-shadow: 0px 0px 15px #00ffff;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input, textarea {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    text-align: center;
+}
+
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #aaaaaa;
+}
+
+/* File input */
+input[type="file"] {
+    border: none;
+    color: #00ffff;
+}
+
+/* Submit button */
+button {
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    border: none;
+    padding: 12px 20px;
+    margin-top: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0px 0px 10px #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.7);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .create-game-form {
+        width: 95%;
+    }
+
+    button {
+        width: 80%;
+    }
+
+    input, textarea {
+        width: 100%;
+    }
+}

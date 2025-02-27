@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.update-game-container {
+    background: #1c1c1c;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.3);
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: 'Roboto', sans-serif;
+    color: #e0e0e0; /* Light text color */
+}
+
+/* Title Styling */
+.update-game-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #00ff99;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+/* Form input fields */
+.input-field {
+    background: #333;
+    border: 2px solid #00ff99;
+    color: #e0e0e0;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border 0.3s ease;
+}
+
+/* Highlight input fields on focus */
+.input-field:focus {
+    border-color: #ff00ff;
+    outline: none;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+.form-group label {
+    font-size: 1.1rem;
+    color: #00ff99;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Update button styling */
+.update-game-btn {
+    background: linear-gradient(45deg, #ff00ff, #00ffff);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(255, 0, 255, 0.8);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.6);
+}
+
+/* Button hover effect */
+.update-game-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.8);
+}
+
+/* Button active effect */
+.update-game-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0px 0px 30px rgba(255, 0, 255, 1);
+}

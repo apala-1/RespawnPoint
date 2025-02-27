@@ -23,7 +23,7 @@ const userdashboard = () => {
                 </div>
                 <div className="navbar-center">
                     <ul>
-                        <li onClick={() => navigate("/homepage")}>Home</li>
+                        <li onClick={() => navigate("/user-dashboard")}>Home</li>
                         <li onClick={() => navigate("/tutorials")}>Tutorials</li>
                         <li onClick={() => navigate("/reviews")}>Reviews</li>
                     </ul>
@@ -52,9 +52,9 @@ const userdashboard = () => {
 
             <div className={`restPage ${menuActive ? "active" : ""}`}>  {/* Toggling class */}
                 <ul>
-                    <li>Home</li>
-                    <li>Tutorials</li>
-                    <li>Reviews</li>
+                <li onClick={() => navigate("/user-dashboard")}>Home</li>
+                     <li onClick={() => navigate("/tutorials")}>Tutorials</li>
+                     <li onClick={() => navigate("/reviews")}>Reviews</li>
                 </ul>
                 <a href="/profile">
                     <button className="profile-btn">Profile</button>
@@ -133,7 +133,7 @@ const userdashboard = () => {
                 <div className="middle-footer">
                     <h1 className="middle-footer-text">Main Sections</h1>
                     <ul className="middle-footer-links">
-                        <li onClick={() => navigate("/homepage")}>Home</li>
+                        <li onClick={() => navigate("/user-dashboard")}>Home</li>
                         <li onClick={() => navigate("/reviews")}>Game Reviews</li>
                         <li onClick={() => navigate("/tutorials")}>Tutorials</li>
                         <li onClick={() => navigate("/forum")}>Community / Forum</li>

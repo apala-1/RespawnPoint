@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './TutorialDetail.css';
 
 const TutorialDetail = () => {
   const { id } = useParams();  // Get tutorial ID from URL parameters
@@ -53,13 +54,13 @@ const TutorialDetail = () => {
   const videoId = extractVideoId(tutorial.youtube_url);
 
   return (
-    <div>
+    <div className='tutorial-detail'>
       <h2>{tutorial.name}</h2>
       <p>{tutorial.tutorial_text}</p>
 
-      {/* Render iframe if videoId is found */}
       {videoId ? (
         <iframe
+        className='tutorial-video'
           width="560"
           height="315"
           src={`https://www.youtube.com/embed/${videoId}`}
@@ -68,7 +69,7 @@ const TutorialDetail = () => {
           title={tutorial.name}
         ></iframe>
       ) : (
-        <p>Invalid YouTube URL</p>
+        <p className='loading'>Invalid YouTube URL</p>
       )}
     </div>
   );

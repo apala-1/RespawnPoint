@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import './updategame.css';  // Ensure to import the CSS
 
 const UpdateGame = () => {
     const [game, setGame] = useState({ name: "", thumbnail: "", description: "" });
     const { gameId } = useParams(); // Get the gameId from the URL
+    const navigate = useNavigate(); // For navigation
 
     useEffect(() => {
         const fetchGame = async () => {
@@ -21,7 +23,6 @@ const UpdateGame = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Sending data as application/json
         try {
             const response = await axios.put(
                 `http://localhost:5000/api/games/${gameId}`,
@@ -37,32 +38,59 @@ const UpdateGame = () => {
                 }
             );
             console.log("Game Updated:", response.data);
+            // Show success message
+            alert("Game updated successfully!");
+
+            // Navigate back to the admin dashboard
+            navigate("/admin-dashboard");
         } catch (error) {
             console.error("Error updating game:", error);
+            alert("Error updating the game. Please try again.");
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={game.name}
-                onChange={(e) => setGame({ ...game, name: e.target.value })}
-                required
-            />
-            <input
-                type="text"
-                value={game.thumbnail}
-                onChange={(e) => setGame({ ...game, thumbnail: e.target.value })}
-                required
-            />
-            <textarea
-                value={game.description}
-                onChange={(e) => setGame({ ...game, description: e.target.value })}
-                required
-            />
-            <button type="submit">Update Game</button>
-        </form>
+        <div className="update-game-container">
+            <h1 className="update-game-title">Update Game</h1>
+            <form onSubmit={handleSubmit} className="update-game-form">
+                <div className="form-group">
+                    <label htmlFor="game-name">Game Name</label>
+                    <input
+                        type="text"
+                        id="game-name"
+                        className="input-field"
+                        value={game.name}
+                        onChange={(e) => setGame({ ...game, name: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="thumbnail">Thumbnail URL</label>
+                    <input
+                        type="text"
+                        id="thumbnail"
+                        className="input-field"
+                        value={game.thumbnail}
+                        onChange={(e) => setGame({ ...game, thumbnail: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="description">Game Description</label>
+                    <textarea
+                        id="description"
+                        className="input-field"
+                        value={game.description}
+                        onChange={(e) => setGame({ ...game, description: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <button type="submit" className="update-game-btn">Update Game</button>
+            </form>
+        </div>
     );
 };
 

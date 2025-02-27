@@ -4,11 +4,12 @@
     box-sizing: border-box;
 }
 
-.entire-page{
+.featured-page{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
 }
 
 .addBtn{
@@ -88,7 +89,7 @@ a{
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     height: 75px;
-    width: 100vw;
+    width: 100%;
     margin-bottom: 1rem;
 }
 
@@ -140,19 +141,9 @@ a{
     text-shadow: 2px 2px 2px  #1e1e1e;
 }
 
-.navbar .navbar-right .items-right button a{
-    text-decoration: none;
-    color: rgb(248, 248, 248);
-}
 
-.navbar .navbar-right .items-right i{
-    cursor: pointer;
-    display: block;
-    margin-right: 30px;
-    margin-top: 17px;
-    margin-left: 20px;
-    font-size: 18px;
-    color: rgb(170, 170, 170);
+.navbar .navbar-right .icons .game{
+    display: none;
 }
 
 .navbar .navbar-right i{
@@ -163,9 +154,6 @@ a{
     display: none;
 }
 
-body{
-    background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
-}
 
 .h1{
     text-align: center;
@@ -180,9 +168,155 @@ body{
     letter-spacing: 3px;
 }
 
-.title{
+.featuredtitle{
     width: 100%;
     background-image: linear-gradient(to right, rgb(35, 35, 35),white,  rgb(40, 40, 40));
+}
+
+.footer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #D9D9D9;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 30px 10px;
+}
+
+.footer .left-footer .left-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.footer .middle-footer .middle-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.footer .right-footer .right-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.contact-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.phone-contact{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.phone-contact i{
+    color: #564E4E;
+    font-size: 16px;
+}
+
+.email-contact i{
+    color: #564E4E;
+    font-size: 16px;
+}
+
+.email-contact{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.phone-contact .phone-number{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #564E4E;
+    margin-left: 10px;
+    font-weight: 100;
+    margin-top: 0px;
+}
+
+.email-contact .email{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #564E4E;
+    margin-left: 10px;
+    font-weight: 100;
+    margin-top: 0px;
+}
+
+.footer .middle-footer .middle-footer-links li, .footer .right-footer .right-footer-links li{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #564E4E;
+    margin-left: 10px;
+    font-weight: 100;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+.footer .middle-footer .middle-footer-links ul{
+    margin-top: 20px;
+}
+
+.footer .right-footer .right-footer-links ul{
+    margin-top: 20px;
+}
+
+.footer .middle-footer .middle-footer-links li{
+    list-style: none;
+}
+
+.middle-footer .middle-footer-links{
+    margin-top: 20px;
+}
+
+.right-footer .right-footer-links{
+    margin-top: 20px;
+}
+
+.middle-footer .middle-footer-links li a{
+    text-decoration: none;
+    color: #564E4E;
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+}
+
+.footer .right-footer .right-footer-links li{
+    list-style: none;
+}
+
+.right-footer .right-footer-links li a{
+    text-decoration: none;
+    color: #564E4E;
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+}
+
+.copyright-foot{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #4E3A3A;
+}
+
+.copyright-foot .copyright-text{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #C0C0C0;
+    font-weight: 200;
+    letter-spacing: 1px;
 }
 
 @font-face {
@@ -190,29 +324,25 @@ body{
     src: url(../../assets/fonts/Jersey25-Regular.ttf);
 }
 
+/* Mobile Menu (Hidden by Default) */
+.restPage {
+    display: none;
+}
+
+
+
+/* 📱 Mobile Menu Styles */
 @media screen and (max-width: 800px){
     .navbar-center, .navbar-right .items-right button {
         display: none;
     }
 
-    .navbar .navbar-right .items-right .game {
-        display: none;
+    .navbar .navbar-right .icons .game {
+        display: block;
     }
 
     .navbar .navbar-right .items-right .search {
         display: none;
-    }
-
-    .navbar .navbar-right .game {
-        display: block;
-        font-size: 20px;
-        height: 20px;
-        width: 20px;
-        background-color: #000;
-        color: rgb(185, 230, 210);
-        text-shadow: 2px 2px 2px #4d4d4d;
-        cursor: pointer;
-        margin-right: 40px;
     }
 
     .navbar .navbar-right .icons {
@@ -232,7 +362,16 @@ body{
         margin-right: 80px;
     }
 
-    .navbar .navbar-right .game:hover {
+    .navbar .navbar-right .game {
+        display: block;
+        font-size: 50px;
+        color: rgb(185, 230, 210);
+        text-shadow: 2px 2px 2px #4d4d4d;
+        cursor: pointer;
+        margin-right: 40px;
+    }
+
+    .navbar .navbar-right .icons .game:hover {
         color: rgb(237, 244, 244);
     }
 
@@ -248,6 +387,7 @@ body{
         flex-direction: column;
         justify-content: end;
         align-items: end;
+        width: 100%;
     }
     
     .restPage {
@@ -259,6 +399,7 @@ body{
     }
     
     .restPage ul li{
+        cursor: pointer;
         margin-bottom: 8px;
         list-style: none;
         font-family: Tahoma;
@@ -294,5 +435,56 @@ body{
     .restPage button a{
         color: white;
         text-decoration: none;
+    }
+
+    .footer{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer .left-footer .left-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .left-footer .contact-items .phone-contact p, .footer .left-footer .contact-items .email-contact p{
+        font-size: 10px;
+    }
+
+
+    .footer .middle-footer .middle-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .middle-footer-links li a{
+        font-size: 10px;
+    }
+
+    .footer .right-footer .right-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .right-footer-links li a{
+        font-size: 10px;
+    }
+
+    .copyright-foot{
+        height: auto;
+    }
+
+    .copyright-foot .copyright-text{
+        font-size: 10px;
+        padding: 10px;
+    }
+
+    .main-img .black-img .bottom .forums-option:hover{
+        font-size: 1.4rem;
+    }
+    
+    .main-img .black-img .bottom .playthroughs-option:hover{
+        font-size: 1.4rem;
+    }
+    
+    .main-img .black-img .bottom .reviews-option:hover{
+        font-size: 1.4rem;
     }
 }

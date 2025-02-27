@@ -1,0 +1,100 @@
+/* Global Styles for Create Tutorial */
+.create-tutorial-container {
+    background: linear-gradient(135deg, #800000, #330000); /* Red-dark gradient background */
+    color: #fff; /* White text for contrast */
+    font-family: 'Roboto', sans-serif;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.create-tutorial-heading {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: #ff3838; /* Bold red for heading */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect for depth */
+}
+
+.create-tutorial-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.create-tutorial-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 500px;
+}
+
+.create-tutorial-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ff3838; /* Red for labels */
+}
+
+.create-tutorial-input,
+.create-tutorial-textarea {
+    background-color: #1a1a1a; /* Dark background for inputs */
+    border: none;
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #fff;
+    width: 100%;
+    font-size: 16px;
+}
+
+.create-tutorial-textarea {
+    height: 150px;
+    resize: none;
+}
+
+.create-tutorial-button {
+    background-color: #ff3838; /* Bold red button */
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 220px;
+    margin-top: 20px;
+}
+
+.create-tutorial-button:hover {
+    background-color: #e03131; /* Darker red on hover */
+    transform: scale(1.05);
+}
+
+.create-tutorial-button:focus {
+    outline: none;
+    box-shadow: 0 0 10px #ff3838; /* Glow effect on focus */
+}
+
+@media (max-width: 768px) {
+    .create-tutorial-container {
+        padding: 20px;
+    }
+
+    .create-tutorial-heading {
+        font-size: 26px;
+    }
+
+    .create-tutorial-input,
+    .create-tutorial-textarea {
+        font-size: 14px;
+        max-width: 100%;
+    }
+}

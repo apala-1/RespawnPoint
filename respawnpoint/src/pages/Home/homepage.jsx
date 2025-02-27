@@ -1,17 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react"; 
 import { useNavigate } from "react-router-dom";
 import "./homepage.css";
 
 
 const HomePage = () => {
-    const navigate = useNavigate();
-    // const menuIcon = document.getElementById("menuIcon");
-    // const items = document.getElementById("items");
-
-    // menuIcon.onclick = function(){
-    //     console.log("Menu Icon Clicked!");
-    //     items.classList.toggle("active");
-    // }
+      const navigate = useNavigate();
+        const [menuActive, setMenuActive] = useState(false);  // For toggling
+      
+            const toggleMenu = () => {
+                setMenuActive(!menuActive); // Toggle active state
+            }; 
     return(
        <div className="everything">
                     <div className="navbar">
@@ -32,20 +30,29 @@ const HomePage = () => {
                             <i className="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <div className="icons">
-                        <div id="menuIcon" className="game"></div>
-                        <div className="search"></div>
+                        <div
+                                 id="menuIcon"
+                                 className="game"
+                                 onClick={toggleMenu}  // Add the toggle functionality here
+                             >
+                                 =
+                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="restPage" id = "items">
-                        <ul>
-                            <li onClick={() => navigate("/login")}>Home</li>
-                            <li onClick={() => navigate("/login")}>Tutorials</li>
-                            <li onClick={() => navigate("/login")}>Reviews</li>
-                        </ul>
-                        <button className="logIn" onClick={() => navigate("/login")}>Log In</button>
-                        <button className="signUp" onClick={() => navigate("/signup")}>Sign Up</button>
-                </div>
+                <div className={`restPage ${menuActive ? "active" : ""}`}>  {/* Toggling class */}
+                     <ul>
+                     <li onClick={() => navigate("/homepage")}>Home</li>
+                             <li onClick={() => navigate("/login")}>Tutorials</li>
+                             <li onClick={() => navigate("/login")}>Reviews</li>
+                     </ul>
+                         <button onClick={() => navigate("/choose")} className="logIn">Log In</button>
+        
+                     <button onClick={() => navigate("/signup")} className="signUp">
+                         Sign Up
+                     </button>
+        
+                 </div>
                 <div className="main-img">
                     <div className="black-img">
                         <div className="inside-div">

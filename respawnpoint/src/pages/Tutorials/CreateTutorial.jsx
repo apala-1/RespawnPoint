@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './createtutorial.css'; // Make sure to import the CSS
 
 const CreateTutorial = () => {
   const [name, setName] = useState('');
@@ -25,7 +26,7 @@ const CreateTutorial = () => {
       setName('');
       setYoutubeUrl('');
       setTutorialText('');
-      // Optionally, redirect to tutorials page
+      // Optionally, redirect to tutorials page or show success message
     } else {
       console.error("Error creating tutorial:", data.error);
       // Handle error here
@@ -33,30 +34,45 @@ const CreateTutorial = () => {
   };
 
   return (
-    <div>
-      <h2>Create a Tutorial</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Tutorial Name"
-          required
-        />
-        <input
-          type="url"
-          value={youtubeUrl}
-          onChange={(e) => setYoutubeUrl(e.target.value)}
-          placeholder="YouTube URL"
-          required
-        />
-        <textarea
-          value={tutorialText}
-          onChange={(e) => setTutorialText(e.target.value)}
-          placeholder="Tutorial Text"
-          required
-        />
-        <button type="submit">Create Tutorial</button>
+    <div className="create-tutorial-container">
+      <h2 className="create-tutorial-heading">Create a Tutorial</h2>
+      <form className="create-tutorial-form" onSubmit={handleSubmit}>
+        <div className="create-tutorial-input-container">
+          <label className="create-tutorial-label" htmlFor="name">Tutorial Name</label>
+          <input
+            className="create-tutorial-input"
+            id="name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter Tutorial Name"
+            required
+          />
+        </div>
+        <div className="create-tutorial-input-container">
+          <label className="create-tutorial-label" htmlFor="youtubeUrl">YouTube URL</label>
+          <input
+            className="create-tutorial-input"
+            id="youtubeUrl"
+            type="url"
+            value={youtubeUrl}
+            onChange={(e) => setYoutubeUrl(e.target.value)}
+            placeholder="Enter YouTube URL"
+            required
+          />
+        </div>
+        <div className="create-tutorial-input-container">
+          <label className="create-tutorial-label" htmlFor="tutorialText">Tutorial Text</label>
+          <textarea
+            className="create-tutorial-textarea"
+            id="tutorialText"
+            value={tutorialText}
+            onChange={(e) => setTutorialText(e.target.value)}
+            placeholder="Enter Tutorial Text"
+            required
+          />
+        </div>
+        <button className="create-tutorial-button" type="submit">Create Tutorial</button>
       </form>
     </div>
   );

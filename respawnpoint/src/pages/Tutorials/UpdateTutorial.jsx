@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './updatetutorial.css'; // Ensure this is the correct path to your CSS
 
 const UpdateTutorial = () => {
   const { id } = useParams();
@@ -46,53 +47,58 @@ const UpdateTutorial = () => {
   };
 
   // Handle tutorial deletion
-    // Handle tutorial deletion
-    const handleDelete = async () => {
-        const response = await fetch(`http://localhost:5000/api/tutorials/${id}`, {
-          method: 'DELETE',
-        });
-    
-        if (response.ok) {
-          navigate('/tutorials');  // Redirect to the tutorials list after deletion
-        } else {
-          console.error('Error deleting tutorial');
-        }
-      };
+  const handleDelete = async () => {
+    const response = await fetch(`http://localhost:5000/api/tutorials/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      navigate('/tutorials');  // Redirect to the tutorials list after deletion
+    } else {
+      console.error('Error deleting tutorial');
+    }
+  };
 
   return (
-    <div>
-      <h2>Update Tutorial</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
+    <div className="update-tutorial-container">
+      <h2 className="update-tutorial-heading">Update Tutorial</h2>
+      <form className="update-tutorial-form" onSubmit={handleSubmit}>
+        <div className="update-tutorial-input-container">
+          <label className="update-tutorial-label" htmlFor="name">Name:</label>
           <input
+            className="update-tutorial-input"
+            id="name"
             type="text"
             value={tutorial.name}
             onChange={(e) => setTutorial({ ...tutorial, name: e.target.value })}
             required
           />
         </div>
-        <div>
-          <label>YouTube URL:</label>
+        <div className="update-tutorial-input-container">
+          <label className="update-tutorial-label" htmlFor="youtubeUrl">YouTube URL:</label>
           <input
+            className="update-tutorial-input"
+            id="youtubeUrl"
             type="text"
             value={tutorial.youtube_url}
             onChange={(e) => setTutorial({ ...tutorial, youtube_url: e.target.value })}
             required
           />
         </div>
-        <div>
-          <label>Description:</label>
+        <div className="update-tutorial-input-container">
+          <label className="update-tutorial-label" htmlFor="tutorialText">Description:</label>
           <textarea
+            className="update-tutorial-textarea"
+            id="tutorialText"
             value={tutorial.tutorial_text}
             onChange={(e) => setTutorial({ ...tutorial, tutorial_text: e.target.value })}
             required
           />
         </div>
-        <button type="submit">Update Tutorial</button>
+        <button className="update-tutorial-button" type="submit">Update Tutorial</button>
       </form>
 
-      <button onClick={handleDelete}>Delete Tutorial</button>
+      <button className="delete-tutorial-button" onClick={handleDelete}>Delete Tutorial</button>
     </div>
   );
 };

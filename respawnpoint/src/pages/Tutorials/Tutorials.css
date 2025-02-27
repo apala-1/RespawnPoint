@@ -4,55 +4,18 @@
     box-sizing: border-box;
 }
 
-.entire-page{
+.tutorial-page{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
     background-image: linear-gradient(to right,black, rgba(255, 21, 0, 0.534), #ff8d8d, rgba(255, 0, 0, 0.534), black);
 }
 
-.tutorial-section {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    flex-wrap: wrap;
-    margin-left: 30px;
-}
 
-.tutorial-card {
-    margin-top: 2rem;
-    background-color: rgba(255, 0, 0, 0.313);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgb(255, 255, 255);
-    overflow: hidden;
-    width: 250px;
-    text-align: center;
-    padding: 25px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+a{
+    text-decoration: none;
 }
-
-.tutorial-card:hover {
-    transform: scale(1.05);
-}
-
-.tutorial-thumbnail {
-    width: 100%;
-    height: auto;
-    border-bottom: 2px solid #ccc;
-    color: white;
-}
-
-.tutorial-card h2 {
-    font-size: 1.5rem;
-    margin: 10px 0;
-    color: white;
-    font-family: "Jersey";
-    letter-spacing: 2px;
-}
- 
 
 .navbar{
     display: flex;
@@ -114,19 +77,9 @@
     text-shadow: 2px 2px 2px  #1e1e1e;
 }
 
-.navbar .navbar-right .items-right button a{
-    text-decoration: none;
-    color: rgb(248, 248, 248);
-}
 
-.navbar .navbar-right .items-right i{
-    cursor: pointer;
-    display: block;
-    margin-right: 30px;
-    margin-top: 17px;
-    margin-left: 20px;
-    font-size: 18px;
-    color: rgb(170, 170, 170);
+.navbar .navbar-right .icons .game{
+    display: none;
 }
 
 .navbar .navbar-right i{
@@ -136,6 +89,7 @@
 .restPage{
     display: none;
 }
+
 
 .h1{
     text-align: center;
@@ -150,9 +104,156 @@
     letter-spacing: 3px;
 }
 
-.title{
+.tutorialtitle{
     width: 100%;
     background-image: linear-gradient(to right, rgba(255, 39, 39, 0.427),white,  rgba(255, 39, 39, 0.427));
+}
+
+.footer{
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #D9D9D9;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 30px 10px;
+}
+
+.footer .left-footer .left-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.footer .middle-footer .middle-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.footer .right-footer .right-footer-text{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 35px;
+    color: #645555;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.contact-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.phone-contact{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.phone-contact i{
+    color: #564E4E;
+    font-size: 16px;
+}
+
+.email-contact i{
+    color: #564E4E;
+    font-size: 16px;
+}
+
+.email-contact{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.phone-contact .phone-number{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #564E4E;
+    margin-left: 10px;
+    font-weight: 100;
+    margin-top: 0px;
+}
+
+.email-contact .email{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #564E4E;
+    margin-left: 10px;
+    font-weight: 100;
+    margin-top: 0px;
+}
+
+.footer .middle-footer .middle-footer-links li, .footer .right-footer .right-footer-links li{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #564E4E;
+    margin-left: 10px;
+    font-weight: 100;
+    margin-top: 0px;
+    cursor: pointer;
+}
+
+.footer .middle-footer .middle-footer-links ul{
+    margin-top: 20px;
+}
+
+.footer .right-footer .right-footer-links ul{
+    margin-top: 20px;
+}
+
+.footer .middle-footer .middle-footer-links li{
+    list-style: none;
+}
+
+.middle-footer .middle-footer-links{
+    margin-top: 20px;
+}
+
+.right-footer .right-footer-links{
+    margin-top: 20px;
+}
+
+.middle-footer .middle-footer-links li a{
+    text-decoration: none;
+    color: #564E4E;
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+}
+
+.footer .right-footer .right-footer-links li{
+    list-style: none;
+}
+
+.right-footer .right-footer-links li a{
+    text-decoration: none;
+    color: #564E4E;
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+}
+
+.copyright-foot{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #4E3A3A;
+}
+
+.copyright-foot .copyright-text{
+    font-family: "Trebuchet MS";
+    font-size: 16px;
+    color: #C0C0C0;
+    font-weight: 200;
+    letter-spacing: 1px;
 }
 
 @font-face {
@@ -160,29 +261,22 @@
     src: url(../../assets/fonts/Jersey25-Regular.ttf);
 }
 
+
+.restPage {
+    display: none;
+}
+
 @media screen and (max-width: 800px){
     .navbar-center, .navbar-right .items-right button {
         display: none;
     }
 
-    .navbar .navbar-right .items-right .game {
-        display: none;
+    .navbar .navbar-right .icons .game {
+        display: block;
     }
 
     .navbar .navbar-right .items-right .search {
         display: none;
-    }
-
-    .navbar .navbar-right .game {
-        display: block;
-        font-size: 20px;
-        height: 20px;
-        width: 20px;
-        background-color: #000;
-        color: rgb(185, 230, 210);
-        text-shadow: 2px 2px 2px #4d4d4d;
-        cursor: pointer;
-        margin-right: 40px;
     }
 
     .navbar .navbar-right .icons {
@@ -190,19 +284,16 @@
         flex-direction: row;
     }
 
-    .navbar .navbar-right .search {
+    .navbar .navbar-right .game {
         display: block;
-        font-size: 20px;
-        height: 20px;
-        width: 20px;
-        background-color: brown;
+        font-size: 50px;
         color: rgb(185, 230, 210);
         text-shadow: 2px 2px 2px #4d4d4d;
         cursor: pointer;
-        margin-right: 80px;
+        margin-right: 40px;
     }
 
-    .navbar .navbar-right .game:hover {
+    .navbar .navbar-right .icons .game:hover {
         color: rgb(237, 244, 244);
     }
 
@@ -212,12 +303,13 @@
     
     .restPage.active{ 
         display: block;
-        background-image: linear-gradient(to right,black, rgb(182, 231, 223), #343333, rgb(255, 211, 211), black);
+        background-image: linear-gradient(to right,black, rgba(255, 21, 0, 0.534), #ff8d8d, rgba(255, 0, 0, 0.534), black);
         padding: 20px;
         display: flex;
         flex-direction: column;
         justify-content: end;
         align-items: end;
+        width: 100%;
     }
     
     .restPage {
@@ -229,6 +321,7 @@
     }
     
     .restPage ul li{
+        cursor: pointer;
         margin-bottom: 8px;
         list-style: none;
         font-family: Tahoma;
@@ -265,4 +358,172 @@
         color: white;
         text-decoration: none;
     }
+
+    .footer{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .footer .left-footer .left-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .left-footer .contact-items .phone-contact p, .footer .left-footer .contact-items .email-contact p{
+        font-size: 10px;
+    }
+
+
+    .footer .middle-footer .middle-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .middle-footer-links li a{
+        font-size: 10px;
+    }
+
+    .footer .right-footer .right-footer-text{
+        font-size: 20px;
+    }
+
+    .footer .right-footer-links li a{
+        font-size: 10px;
+    }
+
+    .copyright-foot{
+        height: auto;
+    }
+
+    .copyright-foot .copyright-text{
+        font-size: 10px;
+        padding: 10px;
+    }
+
+    .main-img .black-img .bottom .forums-option:hover{
+        font-size: 1.4rem;
+    }
+    
+    .main-img .black-img .bottom .playthroughs-option:hover{
+        font-size: 1.4rem;
+    }
+    
+    .main-img .black-img .bottom .reviews-option:hover{
+        font-size: 1.4rem;
+    }
+}
+
+/* 🔥 GAMER THEME - RED CYBERPUNK FIX 🔥 */
+
+/* Updated Background for the Tutorial Section */
+.tutorial-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+    margin-left: 30px;
+    border-radius: 20px;
+    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+}
+
+/* Tutorial Card - Remove Harsh Background, Add Transparency */
+.tutorial-card {
+    margin-top: 2rem;
+    background: rgba(255, 0, 0, 0.15); /* Softer transparent red */
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
+    overflow: hidden;
+    width: 270px;
+    text-align: center;
+    padding: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 2px solid rgba(255, 0, 0, 0.7);
+    backdrop-filter: blur(8px); /* Adds a nice glass effect */
+}
+
+/* Hover Effect - Extra Glow */
+.tutorial-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 1), 0 0 40px rgba(255, 0, 0, 0.8);
+}
+
+/* Fix for Background Clashes */
+.tutorial-card .tutorial-link {
+    text-decoration: none;
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    text-shadow: 0 0 5px red, 0 0 10px red;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Thumbnail Fix */
+.tutorial-thumbnail {
+    width: 100%;
+    height: auto;
+    border-bottom: 3px solid #ff0000;
+    filter: brightness(0.9);
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Thumbnail Hover Effect */
+.tutorial-card:hover .tutorial-thumbnail {
+    filter: brightness(1.2);
+}
+
+
+/* 🛠 CREATE BUTTON */
+.create-tutorial-btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-tutorial-btn .create-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    font-size: 18px;
+    background-image: linear-gradient(to right, #ff0000, #ff4f4f);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 30px;
+}
+
+/* Hover Effect */
+.create-tutorial-btn .create-btn:hover {
+    background-image: linear-gradient(to right, #ff4f4f, #ff0000);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 1);
+    transform: scale(1.05);
+}
+
+/* 🛠 UPDATE BUTTON */
+.tutorial-section .updateBtn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    font-size: 18px;
+    background-image: linear-gradient(to right, #ff0000, #ff4f4f);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.tutorial-section .updateBtn:hover {
+    background-image: linear-gradient(to right, #ff4f4f, #ff0000);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 1);
+    transform: scale(1.05);
 }
