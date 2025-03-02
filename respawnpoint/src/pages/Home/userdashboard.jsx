@@ -8,6 +8,10 @@ const userdashboard = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("token"); // Remove JWT
+        localStorage.removeItem("name"); // Remove JWT
+        localStorage.removeItem("email"); // Remove JWT
+        localStorage.removeItem("role");
+        localStorage.removeItem("user"); // Remove JWT
         window.location.href = "/login"; // Redirect to login page
     };
 

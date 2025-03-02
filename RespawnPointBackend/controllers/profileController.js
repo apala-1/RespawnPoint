@@ -1,21 +1,22 @@
 // Assuming you are using Sequelize, import the User model.
-const { User } = require('../models/user');  // Adjust the path based on your file structure
+const { where } = require('sequelize');
+const { User } = require('../models');  // Adjust the path based on your file structure
 
 const getUserProfile = async (req, res) => {
   try {
-    const userId = req.user.id;  // Extract user ID from the token
+    // The user ID is already decoded and available in req.user from the middleware
+    const userId = req.user.id;
+    console.log("User ID:", userId);
     
-    const user = await User.findByPk(userId);  // Fetch user from the database
+    // You can access the user data without querying the database if needed
+    const userProfile = req.user;  // This is the data you added to req.user in the middleware
 
-    if (!user) {
-      return res.status(404).json({ message: "User not found." });  // Return 404 if user doesn't exist
-    }
-
-    res.json(user);  // Return the user profile
+    res.json(userProfile);  // Return user profile data directly from the decoded token
   } catch (error) {
-    console.error("Error fetching user profile:", error);  // Log the error
-    res.status(500).json({ message: "Internal Server Error" });  // Return 500 for unexpected errors
+    console.error("Error fetching user profile:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
 module.exports = { getUserProfile };
+

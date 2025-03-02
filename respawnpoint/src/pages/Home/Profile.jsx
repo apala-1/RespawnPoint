@@ -5,30 +5,15 @@ const Profile = () => {
   const [message, setMessage] = useState(""); // State for message
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/profile', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,  // Ensure token is sent with the request
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error fetching profile: ${response.statusText}`);
-        }
-        return response.json();  // Parse the response JSON
-      })
-      .then((data) => {
-        setProfile(data);  // Set the profile data if the request is successful
-      })
-      .catch((error) => {
-        console.error("Error fetching profile:", error);
-        setMessage(error.message);  // Set the message for error state
-      });
-    
+    // Retrieve the profile information from localStorage
+    const user = JSON.parse(localStorage.getItem("user"));  // Get the user object from localStorage
 
-    fetch();
-  }, []);
+    if (user) {
+      setProfile({ name: user.name, email: user.email, role: user.role });  // Set profile with user data
+    } else {
+      setMessage("Profile information is not available.");  // Display a message if user is not found
+    }
+  }, []);   // Empty dependency array means this effect runs only once when the component is mounted.
 
   return (
     <div>

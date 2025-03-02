@@ -72,7 +72,7 @@ router.post("/login", async (req, res) => {
 
 
         // 🔹 Return the user role in response
-        res.json({ token, user: { id: user.id, email: user.email, role: user.role } });
+        res.json({ token, user: { id: user.id, email: user.email, role: user.role, name: user.name } });
 
     } catch (err) {
         console.error(err);
