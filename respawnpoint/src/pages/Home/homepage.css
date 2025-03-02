@@ -1179,6 +1179,9 @@ hr{
         transform: scale(0.9);
     }
     
+    .restPage a button{
+        text-decoration: none;
+    }
 
     .main-img .black-img .bottom .forums-option{
         font-size: 1.5rem;

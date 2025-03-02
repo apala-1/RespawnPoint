@@ -34,9 +34,9 @@ const userdashboard = () => {
                 </div>
                 <div className="navbar-right">
                     <div className="items-right">
-                        <a href="/profile">
-                            <button className="profile-btn">Profile</button>
-                        </a>
+         
+                            <button className="profile-btn" onClick={() => navigate("/profile")}>Profile</button>
+            
                         <button onClick={handleLogout} className="logout-btn">
                             Logout
                         </button>
@@ -60,9 +60,9 @@ const userdashboard = () => {
                      <li onClick={() => navigate("/tutorials")}>Tutorials</li>
                      <li onClick={() => navigate("/reviews")}>Reviews</li>
                 </ul>
-                <a href="/profile">
-                    <button className="profile-btn">Profile</button>
-                </a>
+
+                    <button className="profile-btn" onClick={() => navigate("/profile")}>Profile</button>
+
                 <button onClick={handleLogout} className="logout-btn">
                     Logout
                 </button>
