@@ -78,15 +78,17 @@ router.put('/tutorials/:id', authenticateUser, async (req, res) => {
 router.delete('/tutorials/:id', authenticateUser, async (req, res) => {
     const { id } = req.params;
     const userId = req.user.id; // Extracted from the JWT token
+    const userRole = req.user.role; // Extract the user's role from the JWT token
 
     try {
-        // Check if the tutorial exists and if the user is the owner
+        // Check if the tutorial exists
         const result = await pool.query('SELECT * FROM tutorials WHERE id = $1', [id]);
         if (result.rows.length === 0) {
             return res.status(404).json({ message: 'Tutorial not found' });
         }
 
-        if (result.rows[0].user_id !== userId) {
+        // Allow the user to delete the tutorial if they are the owner or an admin
+        if (result.rows[0].user_id !== userId && userRole !== 'admin') {
             return res.status(403).json({ message: 'You are not authorized to delete this tutorial' });
         }
 
@@ -100,6 +102,7 @@ router.delete('/tutorials/:id', authenticateUser, async (req, res) => {
         res.status(500).json({ message: 'Error deleting tutorial', error: err.message });
     }
 });
+
 
 
   
