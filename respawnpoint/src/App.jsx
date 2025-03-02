@@ -27,6 +27,7 @@ const ResetPassword = lazy(() => import("./pages/Auth/ResetPassword"));
 const CreateTutorial = lazy(() => import("./pages/Tutorials/CreateTutorial"));
 const TutorialDetail = lazy(() => import("./pages/Tutorials/TutorialDetail"));
 const UpdateTutorial = lazy(() => import("./pages/Tutorials/UpdateTutorial"));
+const ForumDetails = lazy(() => import("./pages/Forum/ForumDetails"));
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
             <Route path="/create-tutorial" element={<CreateTutorial/>} />
             <Route path="/tutorials/:id" element={<TutorialDetail/>} />
             <Route path="/tutorials/update/:id" element={<UpdateTutorial/>} />
+            <Route path="/forum/:gameId" element={<ForumDetails />} />
           </Routes>
         </Suspense>
       </Router>

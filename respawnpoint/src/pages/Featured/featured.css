@@ -80,6 +80,137 @@ a{
     margin: 10px 0;
 }
 
+/* General Page Styles */
+.forum-details-page {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+  }
+  
+  h1, h2 {
+    color: #e3e3e3;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .featured-thumbnail {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Comments Section */
+  .comments-section {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+  
+  .comments-section h2 {
+    margin-bottom: 15px;
+  }
+  
+  .comment {
+    background-color: #333;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    color: #e0e0e0;
+  }
+  
+  .comment p {
+    margin: 5px 0;
+  }
+  
+  .comment span {
+    font-weight: bold;
+    color: #ff6347; /* Slightly brighter color to highlight */
+  }
+  
+  /* Comment Input Area */
+  .add-comment {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .add-comment textarea {
+    width: 100%;
+    max-width: 600px;
+    height: 120px;
+    padding: 10px;
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    resize: none;
+  }
+  
+  .add-comment button {
+    background-color: #ff6347;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-comment button:hover {
+    background-color: #e53e3e;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .forum-details-page {
+      padding: 15px;
+    }
+  
+    .featured-thumbnail {
+      max-width: 100%;
+    }
+  
+    .add-comment textarea {
+      max-width: 100%;
+    }
+  
+    .add-comment button {
+      width: 100%;
+    }
+  }
+  
+  /* Delete Button */
+.delete-btn {
+    background-color: #e53e3e;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d42e2e;
+  }
+  
+
 
 .navbar{
     display: flex;

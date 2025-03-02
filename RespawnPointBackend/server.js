@@ -6,6 +6,7 @@ const gameRoutes = require("./routes/gameRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const adminProfileRoutes = require("./routes/adminProfileRoutes");
 const tutorialRoutes = require("./routes/tutorialRoutes");
+const commentsRoutes = require("./routes/commentsRoutes");
 require("dotenv").config();
 
 const app = express();
@@ -25,6 +26,7 @@ app.use("/api/games", gameRoutes);
 app.use('/api', profileRoutes);
 app.use("/api", adminProfileRoutes);
 app.use('/api', tutorialRoutes);
+app.use("/comments", commentsRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
