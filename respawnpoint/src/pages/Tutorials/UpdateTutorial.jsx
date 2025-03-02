@@ -9,53 +9,107 @@ const UpdateTutorial = () => {
     youtube_url: '',
     tutorial_text: '',
   });
+  const [isOwner, setIsOwner] = useState(false); // Check if the user is the tutorial owner
   const navigate = useNavigate();
 
   // Fetch the tutorial by ID
   useEffect(() => {
     const fetchTutorial = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/tutorials/${id}`);
+        const token = localStorage.getItem('token');
+        if (!token) {
+          console.error('No token found, user might not be logged in');
+          return;
+        }
+    
+        const response = await fetch(`http://localhost:5000/api/tutorials/${id}`, {
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+    
         const data = await response.json();
-        setTutorial(data);
+        
+        if (response.ok) {
+          setTutorial(data);
+          const user = JSON.parse(localStorage.getItem('user'));
+          if (user?.id === data.user_id) {
+            setIsOwner(true);
+          }
+        } else {
+          console.error('Error fetching tutorial:', data.message);
+        }
       } catch (error) {
         console.error('Error fetching tutorial:', error);
       }
     };
+    
     fetchTutorial();
   }, [id]);
 
   // Handle form submission to update the tutorial
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await fetch(`http://localhost:5000/api/tutorials/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: tutorial.name,
-        youtube_url: tutorial.youtube_url,
-        tutorial_text: tutorial.tutorial_text,
-      }),
-    });
-
-    if (response.ok) {
-      navigate('/tutorials');
-    } else {
-      console.error('Error updating tutorial');
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      console.error('No token found in localStorage');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:5000/api/tutorials/${id}`, {
+        method: "PUT", // Use PUT for updating
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: tutorial.name,
+          youtube_url: tutorial.youtube_url,
+          tutorial_text: tutorial.tutorial_text,
+        }),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Tutorial updated successfully");
+        navigate("/tutorials"); // Redirect to tutorials after successful update
+      } else {
+        console.error("Error updating tutorial:", data.message);
+      }
+    } catch (error) {
+      console.error("Request failed:", error);
     }
   };
 
   // Handle tutorial deletion
   const handleDelete = async () => {
-    const response = await fetch(`http://localhost:5000/api/tutorials/${id}`, {
-      method: 'DELETE',
-    });
-
-    if (response.ok) {
-      navigate('/tutorials');  // Redirect to the tutorials list after deletion
-    } else {
-      console.error('Error deleting tutorial');
+    const token = localStorage.getItem('token');
+  
+    if (!token) {
+      console.error('No token found, cannot delete tutorial.');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:5000/api/tutorials/${id}`, {
+        method: 'DELETE',
+        headers: { 
+          'Authorization': `Bearer ${token}` 
+        },
+      });
+  
+      if (response.ok) {
+        console.log('Tutorial deleted successfully');
+        navigate('/tutorials'); // Redirect to tutorials after deletion
+      } else {
+        console.error('Error deleting tutorial');
+      }
+    } catch (error) {
+      console.error('Request failed:', error);
     }
   };
 
@@ -95,10 +149,13 @@ const UpdateTutorial = () => {
             required
           />
         </div>
-        <button className="update-tutorial-button" type="submit">Update Tutorial</button>
+        {isOwner && (
+          <>
+            <button className="update-tutorial-button" type="submit">Update Tutorial</button>
+            <button className="delete-tutorial-button" type="button" onClick={handleDelete}>Delete Tutorial</button>
+          </>
+        )}
       </form>
-
-      <button className="delete-tutorial-button" onClick={handleDelete}>Delete Tutorial</button>
     </div>
   );
 };

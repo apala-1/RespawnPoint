@@ -1,6 +1,7 @@
 const express = require("express");
 const pool = require("../config/db");  // Use the pool object from db.js
 const router = express.Router();
+const authenticateUser = require("../middleware/authenticateUser");
 
 // Route to fetch tutorials (GET)
 router.get('/tutorials', async (req, res) => {
@@ -13,18 +14,21 @@ router.get('/tutorials', async (req, res) => {
 });
 
 // Route to add tutorial (POST)
-router.post('/tutorials', async (req, res) => {
+router.post('/tutorials', authenticateUser, async (req, res) => {
     const { name, youtube_url, tutorial_text } = req.body;
+    const user_id = req.user.id; // Extract user ID from the authenticated token
+
     try {
         const result = await pool.query(
-            'INSERT INTO tutorials (name, youtube_url, tutorial_text) VALUES ($1, $2, $3) RETURNING *',
-            [name, youtube_url, tutorial_text]
+            'INSERT INTO tutorials (name, youtube_url, tutorial_text, user_id) VALUES ($1, $2, $3, $4) RETURNING *',
+            [name, youtube_url, tutorial_text, user_id]
         );
-        res.status(201).json(result.rows[0]); // Send back the created tutorial
+        res.status(201).json(result.rows[0]);
     } catch (err) {
         res.status(500).json({ message: 'Error creating tutorial', error: err.message });
     }
 });
+
 
 // Route to fetch a single tutorial by ID (GET)
 router.get('/tutorials/:id', async (req, res) => {
@@ -42,10 +46,10 @@ router.get('/tutorials/:id', async (req, res) => {
 
 
 // In tutorialRoutes.js
-router.put('/tutorials/:id', async (req, res) => {
-    console.log('PUT request received for tutorial ID:', req.params.id);  // Add this line
+router.put('/tutorials/:id', authenticateUser, async (req, res) => {
     const { id } = req.params;
     const { name, youtube_url, tutorial_text } = req.body;
+    const userId = req.user.id; // Extracted from the JWT token
 
     try {
         const result = await pool.query('SELECT * FROM tutorials WHERE id = $1', [id]);
@@ -53,48 +57,51 @@ router.put('/tutorials/:id', async (req, res) => {
             return res.status(404).json({ message: 'Tutorial not found' });
         }
 
-        // Update tutorial
+        // Check if the logged-in user is the owner
+        if (result.rows[0].user_id !== userId) {
+            return res.status(403).json({ message: 'You are not authorized to update this tutorial' });
+        }
+
+        // Update the tutorial
         await pool.query(
             'UPDATE tutorials SET name = $1, youtube_url = $2, tutorial_text = $3 WHERE id = $4',
             [name, youtube_url, tutorial_text, id]
         );
 
-        // Fetch updated tutorial
-        const updatedResult = await pool.query('SELECT * FROM tutorials WHERE id = $1', [id]);
-        res.status(200).json(updatedResult.rows[0]);
+        res.status(200).json({ message: 'Tutorial updated successfully' });
     } catch (err) {
-        console.error('Error in update:', err);  // Log the error
         res.status(500).json({ message: 'Error updating tutorial', error: err.message });
     }
 });
 
-router.delete('/tutorials/:id', async (req, res) => {
+
+router.delete('/tutorials/:id', authenticateUser, async (req, res) => {
     const { id } = req.params;
-  
-    console.log('Attempting to delete tutorial with ID:', id);  // Log the ID being passed
-  
-    if (!id || isNaN(id)) {
-      return res.status(400).json({ message: 'Invalid tutorial ID' });
-    }
-  
+    const userId = req.user.id; // Extracted from the JWT token
+
     try {
-      const result = await pool.query('SELECT * FROM tutorials WHERE id = $1', [id]);
-  
-      if (result.rows.length === 0) {
-        console.log('Tutorial not found');
-        return res.status(404).json({ message: 'Tutorial not found' });
-      }
-  
-      // Attempting the delete operation
-      await pool.query('DELETE FROM tutorials WHERE id = $1', [id]);
-  
-      console.log(`Tutorial with ID ${id} deleted successfully`);
-      res.status(200).json({ message: 'Tutorial deleted successfully' });
+        // Check if the tutorial exists and if the user is the owner
+        const result = await pool.query('SELECT * FROM tutorials WHERE id = $1', [id]);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'Tutorial not found' });
+        }
+
+        if (result.rows[0].user_id !== userId) {
+            return res.status(403).json({ message: 'You are not authorized to delete this tutorial' });
+        }
+
+        // Delete the tutorial
+        await pool.query('DELETE FROM tutorials WHERE id = $1', [id]);
+
+        // Return success response after deletion
+        res.status(200).json({ message: 'Tutorial deleted successfully' });
+
     } catch (err) {
-      console.error('Error deleting tutorial:', err); // Log the actual error message
-      res.status(500).json({ message: 'Error deleting tutorial', error: err.message });
+        res.status(500).json({ message: 'Error deleting tutorial', error: err.message });
     }
-  });
+});
+
+
   
 
 

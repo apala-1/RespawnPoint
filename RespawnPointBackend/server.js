@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true })); // ✅ Add this line
 app.use(cors({
     origin: 'http://localhost:5173', // Allow your frontend domain (localhost:5173) to access the backend
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }));
 app.use("/uploads", express.static("uploads"));

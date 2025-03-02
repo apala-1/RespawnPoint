@@ -1,35 +1,56 @@
 import React, { useState } from 'react';
 import './createtutorial.css'; // Make sure to import the CSS
+import { useNavigate } from 'react-router-dom';
 
 const CreateTutorial = () => {
   const [name, setName] = useState('');
   const [youtubeUrl, setYoutubeUrl] = useState('');
   const [tutorialText, setTutorialText] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/api/tutorials', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: name,           // Use 'name' here, not 'tutorialName'
-        youtube_url: youtubeUrl,
-        tutorial_text: tutorialText,
-      }),
-    });
+    try {
+      const token = localStorage.getItem('token');
+      console.log("Stored Token:", localStorage.getItem('token'));
+      console.log(`Bearer ${token}`);
+      
+      if (!token) {
+        console.error('No token found, user might not be logged in');
+        return;
+      }
 
-    const data = await response.json();
-    if (response.ok) {
-      // Reset form or handle success
-      setName('');
-      setYoutubeUrl('');
-      setTutorialText('');
-      // Optionally, redirect to tutorials page or show success message
-    } else {
-      console.error("Error creating tutorial:", data.error);
-      // Handle error here
+      // Make the fetch request
+      const response = await fetch('http://localhost:5000/api/tutorials', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          name: name,           // Use 'name' here, not 'tutorialName'
+          youtube_url: youtubeUrl,
+          tutorial_text: tutorialText,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Reset form or handle success
+        setName('');
+        setYoutubeUrl('');
+        setTutorialText('');
+        // Optionally, redirect to tutorials page or show success message
+        console.log('Tutorial created successfully:', data);
+        navigate("/tutorials");
+      } else {
+        console.error("Error creating tutorial:", data.error);
+        // Handle error here
+      }
+    } catch (error) {
+      console.error("Error during tutorial creation:", error);
+      // Handle the error here (e.g., show a user-friendly message)
     }
   };
 
