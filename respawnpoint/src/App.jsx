@@ -28,6 +28,7 @@ const CreateTutorial = lazy(() => import("./pages/Tutorials/CreateTutorial"));
 const TutorialDetail = lazy(() => import("./pages/Tutorials/TutorialDetail"));
 const UpdateTutorial = lazy(() => import("./pages/Tutorials/UpdateTutorial"));
 const ForumDetails = lazy(() => import("./pages/Forum/ForumDetails"));
+const ReviewDetails = lazy(() => import("./pages/Reviews/ReviewDetails"));
 
 function App() {
 
@@ -63,6 +64,7 @@ function App() {
             <Route path="/tutorials/:id" element={<TutorialDetail/>} />
             <Route path="/tutorials/update/:id" element={<UpdateTutorial/>} />
             <Route path="/forum/:gameId" element={<ForumDetails />} />
+            <Route path="/review/:gameId" element={<ReviewDetails />} />
           </Routes>
         </Suspense>
       </Router>

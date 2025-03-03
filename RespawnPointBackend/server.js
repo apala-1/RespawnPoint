@@ -7,6 +7,7 @@ const profileRoutes = require("./routes/profileRoutes");
 const adminProfileRoutes = require("./routes/adminProfileRoutes");
 const tutorialRoutes = require("./routes/tutorialRoutes");
 const commentsRoutes = require("./routes/commentsRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 require("dotenv").config();
 
 const app = express();
@@ -27,6 +28,7 @@ app.use('/api', profileRoutes);
 app.use("/api", adminProfileRoutes);
 app.use('/api', tutorialRoutes);
 app.use("/comments", commentsRoutes);
+app.use("/reviews", reviewRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
