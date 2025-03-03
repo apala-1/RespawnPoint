@@ -69,11 +69,16 @@ a{
 
 
 .featured-thumbnail {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* Ensures the image scales properly */
+    width: 300px;   /* Fixed width */
+    object-fit: cover;  /* Ensure the image fits properly */
+    object-position: center;  /* Center the image if it's being cropped */
     border-bottom: 2px solid #333;
+    margin: 0 auto;
+    max-width: 100%;  /* Ensures image doesn't overflow */
+    max-height: 100%; /* Prevents stretching beyond set height */
 }
+
+
 
 .featured-card h2 {
     font-size: 1.2rem;

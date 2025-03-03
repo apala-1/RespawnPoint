@@ -1,92 +1,119 @@
 import React, { useState, useEffect } from "react"; 
 import { useNavigate } from "react-router-dom";  
-import "./Playthroughs.css";
+import axios from "axios";
+import "../Featured/featured.css";
 
 const Playthroughs = () => {
-    const games = [
-        { name: "The Witcher 3", image: "https://via.placeholder.com/200" },
-        { name: "Dark Souls III", image: "https://via.placeholder.com/200" },
-        { name: "Hollow Knight", image: "https://via.placeholder.com/200" },
-        { name: "Red Dead Redemption 2", image: "https://via.placeholder.com/200" },
-        { name: "God of War", image: "https://via.placeholder.com/200" },
-        { name: "Sekiro: Shadows Die Twice", image: "https://via.placeholder.com/200" }
-    ];
+  const [games, setGames] = useState([]);
+  const navigate = useNavigate();
+  const [menuActive, setMenuActive] = useState(false);  // For toggling
+   
 
-    const navigate = useNavigate();
-    const [menuActive, setMenuActive] = useState(false);  // For toggling
-     
-    
-        const handleLogout = () => {
-            localStorage.removeItem("token"); // Remove JWT
-            window.location.href = "/login"; // Redirect to login page
-        };
-    
-        const toggleMenu = () => {
-            setMenuActive(!menuActive); // Toggle active state
-        };  
-    return(
-            <div className="playthrough-page">
-                 <div className="navbar">
-                     <div className="navbar-left">
-                         <h1>RESPAWN POINT</h1>
-                     </div>
-                     <div className="navbar-center">
-                         <ul>
-                             <li onClick={() => navigate("/user-dashboard")}>Home</li>
-                             <li onClick={() => navigate("/tutorials")}>Tutorials</li>
-                             <li onClick={() => navigate("/reviews")}>Reviews</li>
-                         </ul>
-                     </div>
-                     <div className="navbar-right">
-                         <div className="items-right">
-                             <a href="/profile">
-                                 <button className="profile-btn">Profile</button>
-                             </a>
-                             <button onClick={handleLogout} className="logout-btn">
-                                 Logout
-                             </button>
-                             <i className="fa-solid fa-magnifying-glass"></i>
-                         </div>
-                         <div className="icons">
-                             <div
-                                 id="menuIcon"
-                                 className="game"
-                                 onClick={toggleMenu}  // Add the toggle functionality here
-                             >
-                                 =
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-        
-                 <div className={`restPage ${menuActive ? "active" : ""}`}>  {/* Toggling class */}
-                     <ul>
+      const handleLogout = () => {
+          localStorage.removeItem("token"); // Remove JWT
+          window.location.href = "/login"; // Redirect to login page
+      };
+  
+      const toggleMenu = () => {
+          setMenuActive(!menuActive); // Toggle active state
+      };
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/games");
+        console.log("Fetched games:", response.data); // ✅ Log the entire response
+        setGames(response.data);
+      } catch (error) {
+        console.error("Error fetching games:", error);
+      }
+    };
+  
+    fetchGames();
+  }, []);
+  
+
+  return (
+    <div className="featured-page">
+         <div className="navbar">
+             <div className="navbar-left">
+                 <h1>RESPAWN POINT</h1>
+             </div>
+             <div className="navbar-center">
+                 <ul>
                      <li onClick={() => navigate("/user-dashboard")}>Home</li>
-                             <li onClick={() => navigate("/tutorials")}>Tutorials</li>
-                             <li onClick={() => navigate("/reviews")}>Reviews</li>
-                     </ul>
+                     <li onClick={() => navigate("/tutorials")}>Tutorials</li>
+                     <li onClick={() => navigate("/reviews")}>Reviews</li>
+                 </ul>
+             </div>
+             <div className="navbar-right">
+                 <div className="items-right">
                      <a href="/profile">
                          <button className="profile-btn">Profile</button>
                      </a>
                      <button onClick={handleLogout} className="logout-btn">
                          Logout
                      </button>
+                     <i className="fa-solid fa-magnifying-glass"></i>
                  </div>
-            <div className="playthroughtitle">
-                <h1 className="h1">Playthroughs</h1>
-            </div>
+                 <div className="icons">
+                     <div
+                         id="menuIcon"
+                         className="game"
+                         onClick={toggleMenu}  // Add the toggle functionality here
+                     >
+                         =
+                     </div>
+                 </div>
+             </div>
+         </div>
 
-            <div className="playthrough-container">
-                <div className="game-list">
-                    {games.map((game, index) => (
-                        <div key={index} className="game-box">
-                            <img src={game.image} alt={game.name} className="game-image" />
-                            <p className="game-name">{game.name}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div className="footer">
+         <div className={`restPage ${menuActive ? "active" : ""}`}>  {/* Toggling class */}
+             <ul>
+             <li onClick={() => navigate("/user-dashboard")}>Home</li>
+                     <li onClick={() => navigate("/tutorials")}>Tutorials</li>
+                     <li onClick={() => navigate("/reviews")}>Reviews</li>
+             </ul>
+             <a href="/profile">
+                 <button className="profile-btn">Profile</button>
+             </a>
+             <button onClick={handleLogout} className="logout-btn">
+                 Logout
+             </button>
+         </div>
+
+      <div className="featuredtitle">
+        <h1 className="h1">Playthroughs</h1>
+      </div>
+
+      <div className="featured-section">
+      {games.length > 0 ? (
+  games.map((game) => {
+    console.log("Game name:", game.name);
+    console.log("Thumbnail URL:", game.thumbnail);
+
+    return (
+      <div
+  className="featured-card"
+  key={game.id}
+  onClick={() => navigate(`/playthrough/${game.id}`)}
+>
+
+        <img
+          src={game.thumbnail ? game.thumbnail : "https://placehold.co/400"}
+          alt={game.name}
+          className="featured-thumbnail"
+        />
+        <h2>{game.name}</h2>
+      </div>
+    );
+  })
+) : (
+  <p>No games available</p>
+)}
+
+      </div>
+      <div className="footer">
                 <div className="left-footer">
                     <h1 className="left-footer-text">Contact Us</h1>
                     <div className="contact-items">
@@ -123,7 +150,7 @@ const Playthroughs = () => {
                 <h1 className="copyright-text">© 2024 RespawnPoint. All rights reserved.</h1>
             </div>
     </div>
-    );
-}
+  );
+};
 
 export default Playthroughs;

@@ -1,144 +1,147 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import "../Featured/featured.css";  // You can use the same CSS file
+import "./PlaythroughDetails.css";
 
-const PlaythroughDetails = () => {
-  const { gameId } = useParams();  // Use the gameId from the URL to fetch the game details
-  const [gameDetails, setGameDetails] = useState({});
-  const [playthroughs, setPlaythroughs] = useState([]);
-  const [newPlaythrough, setNew] = useState('');
-  const [profile, setProfile] = useState({ id: "", name: "", email: "", role: "" });
-
-  // Fetch game details and comments
-  useEffect(() => {
-    const fetchGameDetails = async () => {
+const getVideoIdFromUrl = (url) => {
+    const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/\n\s]+\/\S+\/|\S*\?v=|(?:v|e(?:mbed)?)\/)([\w-]+)|youtu\.be\/([\w-]+))/;
+    const match = url.match(regex);
+    return match ? match[1] || match[2] : null;
+  };  
+  
+  const PlaythroughDetails = () => {
+    const { gameId } = useParams();
+    const [gameDetails, setGameDetails] = useState({});
+    const [playthroughs, setPlaythroughs] = useState([]);
+    const [newPlaythrough, setNewPlaythrough] = useState({ title: "", url: "" });
+    const [profile, setProfile] = useState({ id: "", name: "", email: "", role: "" });
+  
+    useEffect(() => {
+      const fetchGameDetails = async () => {
+        try {
+          const gameResponse = await axios.get(`http://localhost:5000/api/games/${gameId}`);
+          setGameDetails(gameResponse.data);
+  
+          const token = localStorage.getItem("token");
+          const playthroughResponse = await axios.get(`http://localhost:5000/playthroughs/game/${gameId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+  
+          setPlaythroughs(playthroughResponse.data);
+        } catch (error) {
+          console.error("Error fetching game details or playthroughs", error);
+        }
+      };
+  
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user) {
+        setProfile({ id: user.id, name: user.name, email: user.email, role: user.role });
+      }
+  
+      fetchGameDetails();
+    }, [gameId]);
+  
+    const handleAddPlaythrough = async () => {
       try {
-        const gameResponse = await axios.get(`http://localhost:5000/api/games/${gameId}`);
-        setGameDetails(gameResponse.data);
-
-        // Fetch comments with token in the Authorization header
         const token = localStorage.getItem("token");
-
-        const commentsResponse = await axios.get(
-          `http://localhost:5000/comments/forum/${gameId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,  // Include token in the GET request
-            },
-          }
-        );
-
-        setComments(commentsResponse.data);
+        if (!token) {
+          alert("You need to be logged in to add a playthrough.");
+          return;
+        }
+  
+        const response = await axios.post(`http://localhost:5000/playthroughs/game/${gameId}`, {
+          title: newPlaythrough.title,
+          url: newPlaythrough.url,
+        }, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+  
+        setPlaythroughs([...playthroughs, response.data]);
+        setNewPlaythrough({ title: "", url: "" });
       } catch (error) {
-        console.error("Error fetching game details or comments", error);
+        console.error("Error adding playthrough:", error);
       }
     };
-
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      setProfile({ id: user.id, name: user.name, email: user.email, role: user.role });
-    }
-
-    fetchGameDetails();
-  }, [gameId]);
-
-  // Handle adding a comment
-  const handleAddComment = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        alert("You need to be logged in to post a comment.");
-        return;
-      }
-
-      const response = await axios.post(
-        "http://localhost:5000/comments/forum",
-        {
-          game_id: gameId,
-          comment: newComment,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+  
+    const handleDeletePlaythrough = async (playthroughId) => {
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("You need to be logged in to delete a playthrough.");
+          return;
         }
-      );
-
-      setComments([...comments, response.data]);
-      setNewComment('');
-    } catch (error) {
-      console.error("Error adding comment:", error);
-    }
-  };
-
-  // Handle deleting a comment
-  const handleDeleteComment = async (commentId) => {
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        alert("You need to be logged in to delete a comment.");
-        return;
+  
+        await axios.delete(`http://localhost:5000/playthroughs/${playthroughId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+  
+        setPlaythroughs(playthroughs.filter((p) => p.id !== playthroughId));
+      } catch (error) {
+        console.error("Error deleting playthrough:", error);
       }
-
-      const response = await axios.delete(
-        `http://localhost:5000/comments/${commentId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      // Remove the deleted comment from the UI
-      setComments(comments.filter((comment) => comment.id !== commentId));
-      alert(response.data.message); // Show success message
-    } catch (error) {
-      console.error("Error deleting comment:", error);
-      alert("Failed to delete comment");
-    }
-  };
-
-  return (
-    <div className="forum-details-page">
-      <h1>{gameDetails.name} - Forum</h1>
-      <img
-        src={gameDetails.thumbnail || "https://placehold.co/400"}
-        alt={gameDetails.name}
-        className="featured-thumbnail"
-      />
-      <div className="comments-section">
-        <h2>Comments</h2>
-        {comments.length > 0 ? (
-          comments.map((comment) => (
-            <div key={comment.id} className="comment">
-              <p><span>Name:</span> {profile.name || "N/A"}</p>
-              <p><span>Email:</span> {profile.email || "N/A"}</p>
-              <p><span>Role:</span> {profile.role || "N/A"}</p>
-              <p>{comment.comment}</p>
-              {/* Only show delete button if user is the owner of the comment or an admin */}
-              {profile.id && (comment.user_id === profile.id || profile.role === "admin") && (
-                <button onClick={() => handleDeleteComment(comment.id)} className="delete-btn">
-                  Delete Comment
-                </button>
-              )}
-            </div>
-          ))
-        ) : (
-          <p>No comments yet.</p>
-        )}
-
-        <div className="add-comment">
-          <textarea
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Add a comment..."
-          />
-          <button onClick={handleAddComment}>Post Comment</button>
+    };
+  
+    return (
+      <div className="playthrough-details-page">
+        <h1>{gameDetails.name} - Playthroughs</h1>
+        <img
+          src={gameDetails.thumbnail || "https://placehold.co/400"}
+          alt={gameDetails.name}
+          className="featured-thumbnail"
+        />
+        <div className="playthroughs-section">
+          <h2>Playthroughs</h2>
+          {playthroughs.length > 0 ? (
+            playthroughs.map((playthrough) => {
+              const videoId = getVideoIdFromUrl(playthrough.url); // Extract video ID
+              return (
+                <div key={playthrough.id} className="playthrough">
+                  <h3>{playthrough.title}</h3>
+                  {videoId ? (
+                    <iframe
+                      className="tutorial-video"
+                      width="560"
+                      height="315"
+                      src={`https://www.youtube.com/embed/${videoId}`}
+                      frameBorder="0"
+                      allowFullScreen
+                      title={playthrough.title}
+                    ></iframe>
+                  ) : (
+                    <p className="loading">Invalid YouTube URL</p>
+                  )}
+  
+                  {profile.id && (playthrough.user_id === profile.id || profile.role === "admin") && (
+                    <button onClick={() => handleDeletePlaythrough(playthrough.id)} className="delete-btn">
+                      Delete Playthrough
+                    </button>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <p>No playthroughs yet.</p>
+          )}
+  
+          <div className="add-playthrough">
+            <input
+              type="text"
+              value={newPlaythrough.title}
+              onChange={(e) => setNewPlaythrough({ ...newPlaythrough, title: e.target.value })}
+              placeholder="Playthrough title..."
+            />
+            <input
+              type="text"
+              value={newPlaythrough.url}
+              onChange={(e) => setNewPlaythrough({ ...newPlaythrough, url: e.target.value })}
+              placeholder="YouTube URL..."
+            />
+            <button onClick={handleAddPlaythrough}>Add Playthrough</button>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-export default ForumDetails;
+    );
+  };
+  
+  export default PlaythroughDetails;
+  
